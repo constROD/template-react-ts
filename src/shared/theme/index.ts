@@ -10,6 +10,7 @@ import defaultStyled, {
 } from "styled-components";
 
 const colors: IColorTheme = {
+  default: "blue",
   primary: "red",
   primaryLight: "#959595",
   secondary: "yellow",

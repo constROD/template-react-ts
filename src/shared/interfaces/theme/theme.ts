@@ -1,4 +1,5 @@
 export interface IColorTheme {
+  default: string;
   primary: string;
   primaryLight: string;
   secondary: string;

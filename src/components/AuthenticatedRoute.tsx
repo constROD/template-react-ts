@@ -1,4 +1,4 @@
-import Login from "pages/Login";
+import Login from "pages/Login/Login";
 import React from "react";
 import { Redirect, Route, useHistory } from "react-router-dom";
 import { ROUTES } from "shared/constants/routes";
@@ -20,17 +20,17 @@ const AuthenticatedRoute: React.FC<Props> = ({
   let redirectUrl = "";
 
   if (isAuthenticated) {
-    if (path === ROUTES.login) push(ROUTES.home);
+    if (path === ROUTES.LOGIN) push(ROUTES.HOME);
   } else {
-    if (path === ROUTES.login) return <Route {...props} component={Login} />;
-    redirectUrl = ROUTES.login;
+    if (path === ROUTES.LOGIN) return <Route {...props} component={Login} />;
+    redirectUrl = ROUTES.LOGIN;
   }
 
   return (
     <Route
       {...props}
       render={() =>
-        isAuthenticated ? <Default /> : <Redirect to={redirectUrl} />
+        isAuthenticated ? <Default {...props} /> : <Redirect to={redirectUrl} />
       }
     />
   );

@@ -1,7 +1,13 @@
+import {
+  AsyncHome,
+  AsyncLogin,
+  AsyncUserEdit,
+  AsyncUserLists,
+  AsyncUserNew,
+  AsyncUserView,
+} from "components/AsyncRoutes";
 import AuthenticatedRoute from "components/AuthenticatedRoute";
 import PageNotFound from "components/PageNotFound";
-import Home from "pages/Home";
-import Login from "pages/Login";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ROUTES } from "shared/constants/routes";
@@ -12,14 +18,39 @@ const App: React.FC = () => {
   return (
     <Switch>
       <AuthenticatedRoute
-        path={ROUTES.login}
-        component={Login}
+        path={ROUTES.LOGIN}
+        component={AsyncLogin}
         isAuthenticated={isAuthenticated}
       />
       <AuthenticatedRoute
         exact
-        path={ROUTES.home}
-        component={Home}
+        path={ROUTES.HOME}
+        component={AsyncHome}
+        isAuthenticated={isAuthenticated}
+      />
+      <AuthenticatedRoute
+        exact
+        path={ROUTES.USERS.LIST}
+        component={AsyncUserLists}
+        isAuthenticated={isAuthenticated}
+      />
+      {/* Note: if you have /:dynamic and /static. Dapat below ni /static yung route ni /:dynamic */}
+      <AuthenticatedRoute
+        exact
+        path={ROUTES.USERS.NEW}
+        component={AsyncUserNew}
+        isAuthenticated={isAuthenticated}
+      />
+      <AuthenticatedRoute
+        exact
+        path={ROUTES.USERS.VIEW}
+        component={AsyncUserView}
+        isAuthenticated={isAuthenticated}
+      />
+      <AuthenticatedRoute
+        exact
+        path={ROUTES.USERS.EDIT}
+        component={AsyncUserEdit}
         isAuthenticated={isAuthenticated}
       />
       <Route component={PageNotFound} />
