@@ -104,7 +104,7 @@
     "web-vitals": "^1.0.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json}": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --cache --fix"
     ]
   }
