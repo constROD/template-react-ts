@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:storybook/recommended"
+  ],
+  "overrides": [
+    {
+      // or whatever matches stories specified in .storybook/main.js
+      "files": ["*.stories.@(ts|tsx|js|mjs|cjs)"],
+      "rules": {
+        // example of overriding a rule
+        "storybook/hierarchy-separator": "error",
+        // example of disabling a rule
+        "storybook/defaul-exports": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["react", "@typescript-eslint", "jest"],
+  "rules": {
+    "linebreak-style": "off",
+    "no-undef": "error",
+    "prefer-default-export": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
+    "comma-dangle": "off"
+  }
+}

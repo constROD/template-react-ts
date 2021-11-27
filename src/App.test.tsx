@@ -1,9 +1,18 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { GlobalStyle, theme, ThemeProvider } from 'shared/theme';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders learn react link', async () => {
+  render(
+    <BrowserRouter basename="/">
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>,
+  );
+
+  const element = screen.getByText(/Loading.../i);
+  expect(element).toBeInTheDocument();
 });

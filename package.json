@@ -1,31 +1,50 @@
 {
-  "name": "test",
+  "name": "template-react-typescript",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "repository": "https://github.com/constrod/template-react-typescript",
+  "bugs": {
+    "url": "https://github.com/constrod/template-react-typescript/issues"
   },
+  "contributors": [
+    {
+      "name": "Rodrick Alcantara",
+      "url": "https://github.com/constROD"
+    }
+  ],
+  "description": "Custom Template for React TypeScript",
+  "author": "Rodrick Alcantara <rialcantara21@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.ts",
+    "lint:fix": "eslint src --fix --ext .js,.ts",
+    "pre-commit": "lint-staged --allow-empty",
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -38,6 +57,55 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@storybook/addon-actions": "^6.4.0",
+    "@storybook/addon-essentials": "^6.4.0",
+    "@storybook/addon-links": "^6.4.0",
+    "@storybook/node-logger": "^6.4.0",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.4.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/lodash": "^4.14.177",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.15",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "babel-loader": "8.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "19.0.1",
+    "eslint-config-airbnb-typescript": "^16.0.0",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.27.1",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-storybook": "^0.5.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^12.1.2",
+    "lodash": "^4.17.21",
+    "node-sass": "^6.0.1",
+    "styled-components": "^5.3.3",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,md}": [
+      "eslint --cache --fix"
     ]
   }
 }
