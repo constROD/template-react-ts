@@ -5,11 +5,13 @@
     "jest": true
   },
   "extends": [
+    "plugin:@typescript-eslint/recommended",
     "airbnb-typescript",
     "airbnb/hooks",
-    "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   "overrides": [
     {
@@ -30,9 +32,9 @@
     },
     "ecmaVersion": 2021,
     "sourceType": "module",
-    "project": ["./tsconfig.json"]
+    "project": ["./tsconfig.eslint.json"]
   },
-  "plugins": ["react", "@typescript-eslint", "jest"],
+  "plugins": ["react", "@typescript-eslint", "jest", "import"],
   "rules": {
     "linebreak-style": "off",
     "no-undef": "error",
@@ -40,6 +42,26 @@
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "index",
+          "internal",
+          "sibling",
+          "parent",
+          "external",
+          "builtin",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
     "comma-dangle": "off"
   }
 }

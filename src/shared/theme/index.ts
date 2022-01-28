@@ -1,5 +1,9 @@
 import { IColorTheme, IScreenTheme, ITheme } from 'shared/interfaces/Theme';
-import defaultStyled, { createGlobalStyle, ThemedStyledInterface, ThemeProvider as SThemeProvider } from 'styled-components';
+import defaultStyled, {
+  createGlobalStyle,
+  ThemedStyledInterface,
+  ThemeProvider as SThemeProvider,
+} from 'styled-components';
 
 const colors: IColorTheme = {
   red100: 'red',

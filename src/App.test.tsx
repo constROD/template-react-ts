@@ -1,7 +1,8 @@
+import App from './App';
+
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { GlobalStyle, theme, ThemeProvider } from 'shared/theme';
-import App from './App';
 
 test('renders learn react link', async () => {
   render(
@@ -10,7 +11,7 @@ test('renders learn react link', async () => {
         <GlobalStyle />
         <App />
       </ThemeProvider>
-    </BrowserRouter>,
+    </BrowserRouter>
   );
 
   const element = screen.getByText(/Loading.../i);
