@@ -1,8 +1,7 @@
-import HomePage from './pages/Home';
-import { ROUTES } from './shared/constants/Routes';
-
+import HomePage from 'pages/Home';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { ROUTES } from 'shared/constants/Routes';
 
 const App: React.FC = () => {
   return (

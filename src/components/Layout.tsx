@@ -1,6 +1,5 @@
-import { styled } from '../shared/theme';
-
 import React, { ReactNode, Suspense } from 'react';
+import { styled } from 'shared/theme';
 
 type Props = {
   children: ReactNode;
