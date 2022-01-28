@@ -23,6 +23,16 @@
         // example of disabling a rule
         "storybook/defaul-exports": "off"
       }
+    },
+    {
+      "files": ["*.test.ts"],
+      "plugins": ["jest"],
+      "rules": {
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-argument": "off"
+      }
     }
   ],
   "parser": "@typescript-eslint/parser",

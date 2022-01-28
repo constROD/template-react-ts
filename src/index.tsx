@@ -1,10 +1,10 @@
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { GlobalStyle, theme, ThemeProvider } from './shared/theme';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { GlobalStyle, theme, ThemeProvider } from 'shared/theme';
 
 ReactDOM.render(
   <React.StrictMode>

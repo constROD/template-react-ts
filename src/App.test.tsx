@@ -1,8 +1,8 @@
 import App from './App';
+import { GlobalStyle, theme, ThemeProvider } from './shared/theme';
 
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { GlobalStyle, theme, ThemeProvider } from 'shared/theme';
 
 test('renders learn react link', async () => {
   render(

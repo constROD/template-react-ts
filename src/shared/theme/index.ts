@@ -1,4 +1,5 @@
-import { IColorTheme, IScreenTheme, ITheme } from 'shared/interfaces/Theme';
+import { IColorTheme, IScreenTheme, ITheme } from '../interfaces/Theme';
+
 import defaultStyled, {
   createGlobalStyle,
   ThemedStyledInterface,

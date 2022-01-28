@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,7 +20,22 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src"
+    "baseUrl": "."
   },
-  "include": ["src"]
+  "exclude": [
+    "./node_modules",
+    "./build",
+    "./commitlint.config.js",
+    "./src/fixtures/**/*",
+    "./jest.config.ts",
+    "./babel.config.js",
+    "./coverage",
+    "./src/**/*.test.ts",
+    "./__snapshots__",
+    "./jest.setup.ts"
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
 }
