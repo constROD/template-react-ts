@@ -1,7 +1,6 @@
-import React from 'react';
-import { styled } from 'shared/theme';
+import { HomeWrapper } from './Home.styled';
 
-const HomeWrapper = styled.div``;
+import React from 'react';
 
 const Home: React.FC = () => {
   return <HomeWrapper>This is HomePage</HomeWrapper>;
