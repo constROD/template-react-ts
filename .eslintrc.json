@@ -8,22 +8,13 @@
     "plugin:@typescript-eslint/recommended",
     "airbnb-typescript",
     "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react-hooks/recommended",
     "plugin:jest/recommended",
-    "plugin:storybook/recommended",
     "plugin:prettier/recommended",
     "prettier"
   ],
   "overrides": [
-    {
-      // or whatever matches stories specified in .storybook/main.js
-      "files": ["*.stories.@(ts|tsx|js|mjs|cjs)"],
-      "rules": {
-        // example of overriding a rule
-        "storybook/hierarchy-separator": "error",
-        // example of disabling a rule
-        "storybook/defaul-exports": "off"
-      }
-    },
     {
       "files": ["*.test.ts"],
       "plugins": ["jest"],
@@ -44,10 +35,11 @@
     "sourceType": "module",
     "project": ["./tsconfig.eslint.json"]
   },
-  "plugins": ["react", "@typescript-eslint", "jest", "import"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest", "import"],
   "rules": {
     "linebreak-style": "off",
     "no-undef": "error",
+    "no-console": "warn",
     "prefer-default-export": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",

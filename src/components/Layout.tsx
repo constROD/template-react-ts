@@ -11,7 +11,7 @@ const Layout: React.FC = ({ children }) => {
   const count = useAppSelector(state => state.tests.count);
 
   const [, incrementAsync] = useAsyncFn(async () => {
-    increment();
+    await increment();
   });
 
   console.log('APP_ZONE: ', APP_ZONE);

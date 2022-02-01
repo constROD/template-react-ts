@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { IAppDispatch } from 'shared/interfaces/Redux';
 
 interface ITestActions {
-  increment: () => void;
-  decrement: () => void;
+  increment: () => Promise<void>;
+  decrement: () => Promise<void>;
 }
 
 export const TestActions = (): ITestActions => {
