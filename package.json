@@ -24,6 +24,7 @@
     "build": "rm -rf build && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "format": "prettier --write src/**/*.ts{,x}",
     "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint src --fix --ext .js,.ts,.jsx,.tsx",
     "pre-commit": "lint-staged --allow-empty",
@@ -115,8 +116,7 @@
     "web-vitals": "^1.0.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --cache --fix"
-    ]
+    "*.{js,ts,jsx,tsx}": "eslint --cache --fix",
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
