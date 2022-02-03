@@ -14,7 +14,9 @@ const Layout: React.FC = ({ children }) => {
     await increment();
   });
 
+  // eslint-disable-next-line no-console
   console.log('APP_ZONE: ', APP_ZONE);
+  // eslint-disable-next-line no-console
   console.log('count: ', count);
 
   return (

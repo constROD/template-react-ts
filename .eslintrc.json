@@ -11,7 +11,6 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react-hooks/recommended",
     "plugin:jest/recommended",
-    "plugin:prettier/recommended",
     "prettier"
   ],
   "overrides": [
@@ -37,13 +36,14 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "jest", "import"],
   "rules": {
+    "no-prototype-builtins": "off",
+    "class-methods-use-this": "off",
     "linebreak-style": "off",
     "no-undef": "error",
-    "no-console": "warn",
+    "no-console": "error",
     "prefer-default-export": "off",
     "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": "off",
-    "import/extensions": "off",
+    "import/no-cycle": "off",
     "import/order": [
       "error",
       {
@@ -64,6 +64,34 @@
         }
       }
     ],
-    "comma-dangle": "off"
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": ["interface", "typeAlias", "enum", "class", "typeParameter"],
+        "format": ["PascalCase"]
+      }
+    ],
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "fixToUnknown": true
+      }
+    ],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ],
+    "@typescript-eslint/unbound-method": [
+      "error",
+      {
+        "ignoreStatic": true
+      }
+    ]
   }
 }

@@ -4,7 +4,7 @@ import { GlobalStyle, theme, ThemeProvider } from './shared/theme';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-test('renders learn react link', async () => {
+test('renders learn react link', () => {
   render(
     <BrowserRouter basename="/">
       <ThemeProvider theme={theme}>

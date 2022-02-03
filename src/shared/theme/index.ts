@@ -19,7 +19,7 @@ const screens: IScreenTheme = {
 
 export const theme = (): ITheme => ({ colors, screens });
 export const ThemeProvider = SThemeProvider;
-export const styled = defaultStyled as ThemedStyledInterface<ITheme>;
+export const styled: ThemedStyledInterface<ITheme> = defaultStyled;
 export const GlobalStyle = createGlobalStyle`
   html, body {
     background: #FAFDFF;
