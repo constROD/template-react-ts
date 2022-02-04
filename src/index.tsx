@@ -8,10 +8,12 @@ import { BrowserRouter } from 'react-router-dom';
 import createStore from 'shared/redux/store';
 import { GlobalStyle, theme, ThemeProvider } from 'shared/theme';
 
+const store = createStore();
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename="/">
-      <Provider store={createStore()}>
+      <Provider store={store}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <App />
