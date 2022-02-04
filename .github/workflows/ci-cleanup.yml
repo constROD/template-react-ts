@@ -1,0 +1,19 @@
+name: Cleanup Deployment
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cleanup Surge
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.0
+      - run: |
+          npm install --global surge
+          surge teardown ${{ github.head_ref }}.surge.sh --token ${{ secrets.SURGE_TOKEN }}

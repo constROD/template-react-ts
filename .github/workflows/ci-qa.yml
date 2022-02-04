@@ -2,34 +2,84 @@ name: QA Deployment
 on:
   pull_request:
     branches:
+      - 'main'
       - 'develop'
       - 'release'
 
 jobs:
+  # notification-in-progress:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploying notification in Slack
+  #       uses: 8398a7/action-slack@v3
+  #       with:
+  #         status: custom
+  #         custom_payload: |
+  #           {
+  #             text: '(QA): `${{ github.head_ref }}` is now deploying.'
+  #           }
+  #       env:
+  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.0
+
+      - name: Run ESLint
+        run: |
+          yarn install --immutable --immutable-cache
+          yarn lint
+
   test:
     runs-on: ubuntu-latest
+    needs: lint
     steps:
       - uses: actions/checkout@v2
 
       - name: Setup Node Version
         uses: actions/setup-node@v1
         with:
-          node-version: 17.3.0
+          node-version: 16.13.0
       - run: |
+          echo SKIP_PREFLIGHT_CHECK=true >> .env
           yarn
           yarn test
 
   deploy:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - uses: actions/checkout@v2
 
       - name: Deploy to Surge
         uses: actions/setup-node@v1
         with:
-          node-version: 17.3.0
+          node-version: 16.13.0
       - run: |
+          echo SKIP_PREFLIGHT_CHECK=true >> .env
           npm install --global surge
           yarn
-          yarn build 
-          surge ./build ${GITHUB_REF##*/}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          yarn build
+          surge ./build ${{ github.head_ref }}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          echo "Deployed Link: https://${{ github.head_ref }}.surge.sh"
+
+  # notification-done:
+  #   runs-on: ubuntu-latest
+  #   needs: deploy
+  #   steps:
+  #     - name: Deployed notification in Slack
+  #       uses: 8398a7/action-slack@v3
+  #       with:
+  #         status: custom
+  #         custom_payload: |
+  #           {
+  #             text: '(QA): `${{ github.head_ref }}` is now deployed. Preview: https://${{ github.head_ref }}.surge.sh'
+  #           }
+  #       env:
+  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
