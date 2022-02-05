@@ -8,7 +8,7 @@ on:
 
 env:
   GIT_BRANCH_NAME: ${{ github.head_ref }}
-  GIT_PR_URL: https://github.com/nyfulcrum/symple-app-store-react/pull/${{ github.event.pull_request.number }}
+  GIT_PR_URL: https://github.com/nyfulcrum/template-react-typescript/pull/${{ github.event.pull_request.number }}
   PREVIEW_URL: https://$GIT_BRANCH_NAME__${{ github.head_ref }}.surge.sh
 
 jobs:
