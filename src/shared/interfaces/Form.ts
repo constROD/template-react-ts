@@ -1,4 +1,3 @@
-import { DebouncedFunc } from 'lodash';
 import React from 'react';
 
 export interface IForm<T> {
@@ -10,7 +9,7 @@ export interface IForm<T> {
 export interface IFormReturn<T> {
   values: T;
   errors: IErrorValidator[] | null;
-  handle: DebouncedFunc<({ event, callback }: IFormHandle) => void>;
+  handle: ({ event, callback }: IFormHandle) => void;
   setValue: (id: string, newValue: unknown) => void;
   setValues: (newValues: T) => void;
 }
