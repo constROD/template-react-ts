@@ -4,9 +4,10 @@ on:
     types: [published]
 
 env:
-  GIT_BRANCH_NAME: ${{ github.head_ref }}
-  GIT_PR_URL: https://github.com/nyfulcrum/template-react-typescript/pull/${{ github.event.pull_request.number }}
-  PREVIEW_URL: https://$GIT_BRANCH_NAME__${{ github.head_ref }}.surge.sh
+  GIT_HEAD_BRANCH: ${{ github.head_ref }}
+  GIT_BASE_BRANCH: ${{ github.base_ref }}
+  GIT_PR_URL: https://github.com/constROD/template-react-typescript/pull/${{ github.event.pull_request.number }}
+  PREVIEW_URL: https://${{ github.base_ref }}__${{ github.head_ref }}.surge.sh
 
 jobs:
   lint:
@@ -21,7 +22,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":large_orange_circle: `${{ env.GIT_BRANCH_NAME }}` branch is now deploying to `production`."
+                    "text": ":large_orange_circle: `base: ${{ env.GIT_BASE_BRANCH }}` <- `head: ${{ env.GIT_HEAD_BRANCH }}` is now deploying to `production`."
                   }
                 },
                 { "type": "divider" },
@@ -65,7 +66,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":red_circle: `${{ env.GIT_BRANCH_NAME }}` branch encountered an error while linting."
+                    "text": ":red_circle: `base: ${{ env.GIT_BASE_BRANCH }}` <- `head: ${{ env.GIT_HEAD_BRANCH }}` encountered an error while linting."
                   }
                 },
                 { "type": "divider" },
@@ -115,7 +116,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":red_circle: `${{ env.GIT_BRANCH_NAME }}` branch encountered an error while testing."
+                    "text": ":red_circle: `base: ${{ env.GIT_BASE_BRANCH }}` <- `head: ${{ env.GIT_HEAD_BRANCH }}` encountered an error while testing."
                   }
                 },
                 { "type": "divider" },
@@ -177,7 +178,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":red_circle: `${{ env.GIT_BRANCH_NAME }}` branch encountered an error while building."
+                    "text": ":red_circle: `base: ${{ env.GIT_BASE_BRANCH }}` <- `head: ${{ env.GIT_HEAD_BRANCH }}` encountered an error while building."
                   }
                 },
                 { "type": "divider" },
