@@ -4,6 +4,9 @@ on:
     types:
       - closed
 
+env:
+  PREVIEW_URL: https://${{ github.base_ref }}__${{ github.head_ref }}.surge.sh
+
 jobs:
   cleanup:
     runs-on: ubuntu-latest
@@ -16,4 +19,4 @@ jobs:
           node-version: 16.13.0
       - run: |
           npm install --global surge
-          surge teardown ${{ github.head_ref }}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+          surge teardown ${{ env.PREVIEW_URL }} --token ${{ secrets.SURGE_TOKEN }}
