@@ -6,24 +6,47 @@ on:
       - 'develop'
       - 'release'
 
-jobs:
-  # notification-in-progress:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploying notification in Slack
-  #       uses: 8398a7/action-slack@v3
-  #       with:
-  #         status: custom
-  #         custom_payload: |
-  #           {
-  #             text: '(QA): `${{ github.head_ref }}` is now deploying.'
-  #           }
-  #       env:
-  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+env:
+  GIT_BRANCH_NAME: ${{ github.head_ref }}
+  GIT_PR_URL: https://github.com/nyfulcrum/symple-app-store-react/pull/${{ github.event.pull_request.number }}
+  PREVIEW_URL: https://$GIT_BRANCH_NAME__${{ github.head_ref }}.surge.sh
 
+jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Slack Notification (Deploying)
+        uses: slackapi/slack-github-action@v1.16.0
+        with:
+          payload: |
+            { "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":large_orange_circle: `${{ env.GIT_BRANCH_NAME }}` branch is now deploying for `QA`."
+                  }
+                },
+                { "type": "divider" },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Pull Request"
+                      },
+                      "url": "${{ env.GIT_PR_URL }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
       - uses: actions/checkout@v1
 
       - name: Setup Node Version
@@ -35,6 +58,39 @@ jobs:
         run: |
           yarn install --immutable --immutable-cache
           yarn lint
+
+      - name: Slack Notification (Lint-Error)
+        uses: slackapi/slack-github-action@v1.16.0
+        with:
+          payload: |
+            { "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":red_circle: `${{ env.GIT_BRANCH_NAME }}` branch encountered an error while linting."
+                  }
+                },
+                { "type": "divider" },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Pull Request"
+                      },
+                      "url": "${{ env.GIT_PR_URL }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        if: ${{ failure() || cancelled() }}
 
   test:
     runs-on: ubuntu-latest
@@ -51,6 +107,39 @@ jobs:
           yarn
           yarn test
 
+      - name: Slack Notification (Test-Error)
+        uses: slackapi/slack-github-action@v1.16.0
+        with:
+          payload: |
+            { "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":red_circle: `${{ env.GIT_BRANCH_NAME }}` branch encountered an error while testing."
+                  }
+                },
+                { "type": "divider" },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Pull Request"
+                      },
+                      "url": "${{ env.GIT_PR_URL }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        if: ${{ failure() || cancelled() }}
+
   deploy:
     runs-on: ubuntu-latest
     needs: test
@@ -61,27 +150,83 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.13.0
-        env:
-          SUB_DOMAIN: ${{ github.base_ref }}__${{ github.head_ref }}
       - run: |
           echo SKIP_PREFLIGHT_CHECK=true >> .env
           npm install --global surge
           yarn
           yarn build
-          surge ./build $SUB_DOMAIN.surge.sh --token ${{ secrets.SURGE_TOKEN }}
-          echo "Deployed Link: https://$SUB_DOMAIN.surge.sh"
+          surge ./build ${{ env.PREVIEW_URL }} --token ${{ secrets.SURGE_TOKEN }}
 
-  # notification-done:
-  #   runs-on: ubuntu-latest
-  #   needs: deploy
-  #   steps:
-  #     - name: Deployed notification in Slack
-  #       uses: 8398a7/action-slack@v3
-  #       with:
-  #         status: custom
-  #         custom_payload: |
-  #           {
-  #             text: '(QA): `${{ github.head_ref }}` is now deployed. Preview: https://${{ github.base_ref }}__${{ github.head_ref }}.surge.sh'
-  #           }
-  #       env:
-  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: Slack Notification (Deployed-Error)
+        uses: slackapi/slack-github-action@v1.16.0
+        with:
+          payload: |
+            { "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":red_circle: `${{ env.GIT_BRANCH_NAME }}` branch encountered an error while deploying."
+                  }
+                },
+                { "type": "divider" },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Pull Request"
+                      },
+                      "url": "${{ env.GIT_PR_URL }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        if: ${{ failure() || cancelled() }}
+
+      - name: Slack Notification (Deployed)
+        uses: slackapi/slack-github-action@v1.16.0
+        with:
+          payload: |
+            { "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":large_green_circle: `${{ env.GIT_BRANCH_NAME }}` branch is now deployed for `QA`."
+                  }
+                },
+                { "type": "divider" },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Pull Request"
+                      },
+                      "url": "${{ env.GIT_PR_URL }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Preview"
+                      },
+                      "url": "${{ env.PREVIEW_URL }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        if: ${{ success() }}
