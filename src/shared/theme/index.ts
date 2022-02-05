@@ -25,11 +25,13 @@ export const GlobalStyle = createGlobalStyle`
     background: #FAFDFF;
     padding: 0;
     margin: 0;
+    height: 100%;
+    width: 100%;
   }
 
   #root {
     display: grid;
-    height: 100vh;
+    height: 100%;
   }
   
   *, *::before, *::after {
