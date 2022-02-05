@@ -4,6 +4,7 @@ import React, { useCallback, useMemo } from 'react';
 import { useForm } from 'shared/hooks/useForm';
 import { ILoginForm } from 'shared/interfaces/Auth';
 import { IFormElements } from 'shared/interfaces/Form';
+import { loginValidator } from 'shared/validators/Login';
 
 const Login: React.FC = () => {
   const defaultValues: ILoginForm = useMemo(
@@ -14,7 +15,10 @@ const Login: React.FC = () => {
     []
   );
 
-  const { values, errors, handle } = useForm<ILoginForm>({ defaultValues });
+  const { values, errors, handle } = useForm<ILoginForm>({
+    defaultValues,
+    validator: loginValidator,
+  });
 
   const memoizedHandle = useCallback(
     (...args: [React.ChangeEvent<IFormElements>]) => {

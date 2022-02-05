@@ -209,10 +209,6 @@ export const useForm = <T>(options: IForm<T>): IFormReturn<T> => {
       void validatorAsync(state);
     }
     run.current = true;
-
-    return () => {
-      run.current = false;
-    };
   }, [state, validatorAsync]);
 
   return useMemo(
