@@ -47,6 +47,11 @@ jobs:
 
       - uses: actions/checkout@v1
 
+      - name: Setup Environment Variables
+        run: |
+          echo SKIP_PREFLIGHT_CHECK=true >> .env
+          echo REACT_APP_APP_ZONE=develop >> .env
+
       - name: Setup Node Version
         uses: actions/setup-node@v1
         with:
@@ -98,12 +103,16 @@ jobs:
         with:
           ref: develop
 
+      - name: Setup Environment Variables
+        run: |
+          echo SKIP_PREFLIGHT_CHECK=true >> .env
+          echo REACT_APP_APP_ZONE=develop >> .env
+
       - name: Setup Node Version
         uses: actions/setup-node@v1
         with:
           node-version: 16.13.0
       - run: |
-          echo SKIP_PREFLIGHT_CHECK=true >> .env
           yarn
           yarn test
 
