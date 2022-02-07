@@ -37,6 +37,8 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "jest", "import"],
   "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "no-prototype-builtins": "off",
     "class-methods-use-this": "off",
     "linebreak-style": "off",
@@ -65,6 +67,7 @@
         }
       }
     ],
+    "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {

@@ -206,7 +206,7 @@ export const useForm = <T>(options: IForm<T>): IFormReturn<T> => {
 
   useEffect(() => {
     if (run.current) {
-      void validatorAsync(state);
+      validatorAsync(state);
     }
     run.current = true;
   }, [state, validatorAsync]);
