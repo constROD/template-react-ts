@@ -186,7 +186,7 @@ jobs:
           npm install --global surge
           yarn
           yarn build
-          surge ./public ${{ env.PREVIEW_URL }} --token ${{ secrets.SURGE_TOKEN }}
+          surge ./build ${{ env.PREVIEW_URL }} --token ${{ secrets.SURGE_TOKEN }}
 
       - name: Slack Notification (Deployed-Error)
         uses: slackapi/slack-github-action@v1.16.0
