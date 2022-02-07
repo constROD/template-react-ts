@@ -26,6 +26,7 @@
     "lint:fix": "eslint src --fix --ext .js,.ts,.jsx,.tsx",
     "pre-commit": "lint-staged --allow-empty",
     "prepare": "husky install",
+    "git:develop": "git checkout develop && git pull origin develop && git branch | grep -v \"main\\|develop\" | xargs git branch -D",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
