@@ -1,4 +1,4 @@
-name: develop Deployment
+name: Develop Deployment
 on:
   release:
     types: [published]
