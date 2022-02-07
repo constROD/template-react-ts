@@ -2,22 +2,19 @@ import { testDecrementAsync, testIncrementAsync } from './Thunks';
 
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { IAppDispatch } from 'shared/interfaces/Redux';
+import { IActionResponse, IAppDispatch } from 'shared/interfaces/Redux';
 
-interface ITestActions {
-  increment: () => Promise<void>;
-  decrement: () => Promise<void>;
-}
-
-export const TestActions = (): ITestActions => {
+const TestActions = () => {
   const dispatch = useDispatch<IAppDispatch>();
 
   const increment = useCallback(async () => {
-    await dispatch(testIncrementAsync());
+    const { payload } = await dispatch(testIncrementAsync());
+    return payload as IActionResponse<undefined>;
   }, [dispatch]);
 
   const decrement = useCallback(async () => {
-    await dispatch(testDecrementAsync());
+    const { payload } = await dispatch(testDecrementAsync());
+    return payload as IActionResponse<undefined>;
   }, [dispatch]);
 
   return {
@@ -25,3 +22,5 @@ export const TestActions = (): ITestActions => {
     decrement,
   };
 };
+
+export default TestActions;

@@ -6,3 +6,11 @@ export enum TestThunks {
 export interface ITestState {
   count: number;
 }
+
+/* Parameters */
+// export interface ITestIncrementParams {}
+// export interface ITestDeccrementParams {}
+
+/* Responses */
+// export interface ITestIncrementResponse {}
+// export interface ITestDeccrementResponse {}

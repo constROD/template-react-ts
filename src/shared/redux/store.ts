@@ -9,7 +9,9 @@ const config = configureStore({
     tests: TestSlice,
   },
   middleware: getDefaultMiddleware =>
-    APP_ZONE !== 'production' ? getDefaultMiddleware().concat(logger) : getDefaultMiddleware(),
+    APP_ZONE !== 'production'
+      ? getDefaultMiddleware({ serializableCheck: false }).concat(logger)
+      : getDefaultMiddleware({ serializableCheck: false }),
 });
 
 const createStore = (): typeof config => config;

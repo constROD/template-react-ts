@@ -4,7 +4,7 @@ import React, { Suspense } from 'react';
 import { useAsyncFn } from 'react-use';
 import { APP_ZONE } from 'shared/configs/App';
 import { useAppSelector } from 'shared/hooks/useRedux';
-import { TestActions } from 'shared/redux/Test/Actions';
+import TestActions from 'shared/redux/Test/Actions';
 
 const Layout: React.FC = ({ children }) => {
   const { increment } = TestActions();
