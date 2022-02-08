@@ -4,7 +4,7 @@ class LocalStorageUtil {
   }
 
   static get(key: string): string {
-    if (localStorage[key]) return '';
+    if (!localStorage[key]) return '';
     return localStorage[key] as string;
   }
 

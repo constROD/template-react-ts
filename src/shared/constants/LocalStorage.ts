@@ -1,6 +1,4 @@
-export enum AppLocalStorage {
-  HostName = 'app_hostName',
-}
+export enum AppLocalStorage {}
 
 export enum AuthLocalStorage {
   IsAuth = 'auth_isAuth',

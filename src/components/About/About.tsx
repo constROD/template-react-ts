@@ -1,10 +1,10 @@
-import { HomeWrapper } from './Home.styled';
+import { AboutWrapper } from './About.styled';
 
 import React from 'react';
 import { useAsyncFn } from 'react-use';
 import UserActions from 'shared/redux/User/Actions';
 
-const Home: React.FC = () => {
+const About: React.FC = () => {
   const { logout } = UserActions();
 
   const [, logoutAsync] = useAsyncFn(async () => {
@@ -17,10 +17,10 @@ const Home: React.FC = () => {
   });
 
   return (
-    <HomeWrapper>
-      This is HomePage. <button onClick={logoutAsync}>Logout</button>
-    </HomeWrapper>
+    <AboutWrapper>
+      This is AboutPage. <button onClick={logoutAsync}>Logout</button>
+    </AboutWrapper>
   );
 };
 
-export default Home;
+export default About;

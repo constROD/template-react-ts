@@ -6,7 +6,7 @@ export type IStoreGetState = IConfiguredStore['getState'];
 export type IStoreRootState = ReturnType<IStoreGetState>;
 export type IAppDispatch = IConfiguredStore['dispatch'];
 
-export interface IActionResponse<D> {
+export interface IActionResponse<D = undefined> {
   data: D | undefined;
   message: string;
   error?: { [key: string]: unknown } | Error;

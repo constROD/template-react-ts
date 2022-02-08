@@ -1,4 +1,4 @@
-import TestSlice from './Test';
+import UserSlice from './User';
 
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
@@ -6,7 +6,7 @@ import { APP_ZONE } from 'shared/configs/App';
 
 const config = configureStore({
   reducer: {
-    tests: TestSlice,
+    user: UserSlice,
   },
   middleware: getDefaultMiddleware =>
     APP_ZONE !== 'production'
