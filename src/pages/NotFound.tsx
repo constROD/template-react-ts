@@ -1,8 +1,14 @@
-import { NotFoundPageWrapper } from './NotFound.styled';
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from 'shared/constants/Routes';
+import { styled } from 'shared/theme';
+
+const NotFoundPageWrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const NotFoundPage: React.FC = () => {
   const navigate = useNavigate();
