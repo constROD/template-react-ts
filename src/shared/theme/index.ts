@@ -27,6 +27,9 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     height: 100%;
     width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
   }
 
   #root {
@@ -35,9 +38,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   *, *::before, *::after {
-    font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
-    font-size: 14px;
-    font-weight: 400;
   }
 `;
