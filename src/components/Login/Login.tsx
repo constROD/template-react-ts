@@ -1,7 +1,9 @@
 import { LoginWrapper } from './Login.styled';
 
 import React, { useCallback, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAsyncFn } from 'react-use';
+import { ROUTES } from 'shared/constants/Routes';
 import { useForm } from 'shared/hooks/useForm';
 import { ILoginForm } from 'shared/interfaces/Auth';
 import { IFormElements } from 'shared/interfaces/Form';
@@ -9,6 +11,7 @@ import UserActions from 'shared/redux/User/Actions';
 import { loginValidator } from 'shared/validators/Login';
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const defaultValues: ILoginForm = useMemo(
     () => ({
       email: '',
@@ -36,10 +39,10 @@ const Login: React.FC = () => {
     const [form] = args;
     const { error } = await login(form);
 
-    if (error) {
-      // eslint-disable-next-line no-console
-      console.log('login: ', error);
-    }
+    if (!error) return navigate(ROUTES.HOME);
+
+    // eslint-disable-next-line no-console
+    console.log('login: ', error);
   });
 
   const loginSubmit = () => loginAsync(values);
