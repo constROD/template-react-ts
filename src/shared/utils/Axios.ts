@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-param-reassign */
 
 import LocalStorageUtil from './LocalStorage';
@@ -10,6 +11,14 @@ import { IHttpOptions, IHttpRequest, IHttpResponse } from 'shared/interfaces/Htt
 const PrivateInstance = axios.create();
 const PublicInstance = axios.create();
 
+const defaultError = (errorData: any = {}) => ({
+  data: {
+    ...HTTP_RESPONSES[HttpResponseType.ServerError],
+    message: `Something went wrong. Please try again.`,
+    ...errorData,
+  },
+});
+
 PrivateInstance.interceptors.request.use(config => {
   if (config.headers) {
     config.headers[XHeader.IdToken] = LocalStorageUtil.get(AuthLocalStorage.IdToken);
@@ -20,40 +29,27 @@ PrivateInstance.interceptors.request.use(config => {
 
 PrivateInstance.interceptors.response.use(
   res => res,
-  error => {
-    if (!error.response) {
-      return Promise.reject({
-        ...error,
-        data: {
-          ...HTTP_RESPONSES[HttpResponseType.ServerError],
-          message: `Can't connect to the server. Please try again later.`,
-          error,
-        },
-      });
+  err => {
+    if (!err.response) {
+      return Promise.reject({ ...err, ...defaultError() });
     }
 
-    if (error.response.data.code === Code.Unauthorized) {
+    if (err.response.data.code === Code.Unauthorized) {
       LocalStorageUtil.clear();
     }
-    return Promise.reject(error.response);
+
+    return Promise.reject({ ...err.response, ...defaultError(err.response.data) });
   }
 );
 
 PublicInstance.interceptors.response.use(
   res => res,
-  error => {
-    if (!error.response) {
-      return Promise.reject({
-        ...error,
-        data: {
-          ...HTTP_RESPONSES[HttpResponseType.ServerError],
-          message: `Can't connect to the server. Please try again later.`,
-          error,
-        },
-      });
+  err => {
+    if (!err.response) {
+      return Promise.reject({ ...err, ...defaultError() });
     }
 
-    return Promise.reject(error.response);
+    return Promise.reject({ ...err.response, ...defaultError(err.response.data) });
   }
 );
 
