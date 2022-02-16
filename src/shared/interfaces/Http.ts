@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosRequestConfig } from 'axios';
 
-export interface IHttpResponse<R = unknown> {
+export interface IHttpResponse<R = undefined> {
   message: string;
   statusCode: number;
   code: number;
   records?: R;
-  error?: Error;
+  error?: any;
 }
 
 export type IHttpRequest = {
