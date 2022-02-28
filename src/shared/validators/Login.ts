@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { ILoginForm } from 'shared/interfaces/Auth';
-import { IErrorValidator } from 'shared/interfaces/Validator';
+import { IValidatorError, IValidatorResponse } from 'shared/interfaces/Validator';
 import * as yup from 'yup';
 
-export const loginValidator = (values: ILoginForm): Promise<IErrorValidator[] | null> => {
-  return new Promise(resolve => {
+export const loginValidator = (values: ILoginForm): Promise<IValidatorResponse<ILoginForm>> =>
+  new Promise(resolve => {
     const schema = yup.object().shape({
       email: yup.string().required('Email is required.'),
       password: yup
@@ -14,15 +14,16 @@ export const loginValidator = (values: ILoginForm): Promise<IErrorValidator[] | 
     });
 
     schema
-      .validate(values, { abortEarly: false })
-      .then(() => resolve(null))
-      .catch(error =>
-        resolve(
-          error.inner.map((e: { path: string; message: string }) => ({
-            id: e.path,
-            message: e.message,
-          })) as IErrorValidator[]
-        )
-      );
+      .validate(values, { abortEarly: false, stripUnknown: true })
+      .then(data => {
+        const sanitizeData = data as ILoginForm;
+        resolve({ data: sanitizeData, error: undefined });
+      })
+      .catch(err => {
+        const error = err.inner.map((e: { path: string; message: string }) => ({
+          id: e.path,
+          message: e.message,
+        })) as IValidatorError[];
+        resolve({ data: undefined, error });
+      });
   });
-};

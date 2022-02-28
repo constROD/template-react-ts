@@ -10,7 +10,7 @@ import {
   IFormHandle,
   IFormReturn,
 } from 'shared/interfaces/Form';
-import { IErrorValidator } from 'shared/interfaces/Validator';
+import { IValidatorError } from 'shared/interfaces/Validator';
 
 /*
 	Parameters:
@@ -29,7 +29,7 @@ import { IErrorValidator } from 'shared/interfaces/Validator';
 		}
 
 	Returns:
-		interface IErrorValidator {
+		interface IValidatorResponse {
 			id: string,
 			message: string
 		}
@@ -125,7 +125,7 @@ export const useForm = <T>(options: IForm<T>): IFormReturn<T> => {
     ...options,
   };
   const [state, setState] = useState(defaultValues);
-  const [errors, setErrors] = useState<IErrorValidator[] | null>(null);
+  const [errors, setErrors] = useState<IValidatorError[] | undefined>(undefined);
   const run = useRef(false);
 
   const handle = useMemo(
@@ -201,7 +201,10 @@ export const useForm = <T>(options: IForm<T>): IFormReturn<T> => {
 
   const [, validatorAsync] = useAsyncFn(async (...args: [T]) => {
     const [values] = args;
-    if (validator) setErrors(await validator(values));
+    if (validator) {
+      const { error } = await validator(values);
+      setErrors(error);
+    }
   });
 
   useEffect(() => {
