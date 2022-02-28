@@ -1,3 +1,5 @@
+import { IErrorValidator } from './Validator';
+
 import React from 'react';
 
 export interface IForm<T> {
@@ -25,9 +27,4 @@ export interface ICheckboxRadio {
   id: string;
   value: string;
   checked: boolean;
-}
-
-export interface IErrorValidator {
-  id: string;
-  message: string;
 }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { ILoginForm } from 'shared/interfaces/Auth';
-import { IErrorValidator } from 'shared/interfaces/Form';
+import { IErrorValidator } from 'shared/interfaces/Validator';
 import * as yup from 'yup';
 
 export const loginValidator = (values: ILoginForm): Promise<IErrorValidator[] | null> => {

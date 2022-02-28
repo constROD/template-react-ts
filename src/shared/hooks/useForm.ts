@@ -5,12 +5,12 @@ import { useCallback, useMemo, useState, useEffect, useRef } from 'react';
 import { useAsyncFn } from 'react-use';
 import {
   ICheckboxRadio,
-  IErrorValidator,
   IForm,
   IFormElements,
   IFormHandle,
   IFormReturn,
 } from 'shared/interfaces/Form';
+import { IErrorValidator } from 'shared/interfaces/Validator';
 
 /*
 	Parameters:
