@@ -21,14 +21,14 @@
     "build": "rm -rf build && react-scripts build && compress-cra",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
-    "lint:fix": "eslint src --fix --ext .js,.ts,.jsx,.tsx",
+    "format": "prettier --write ./src/**/*.ts{,x}",
+    "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
+    "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
     "pre-commit": "lint-staged --allow-empty",
     "prepare": "husky install",
-    "git:develop": "git checkout develop && git pull origin develop && git branch | grep -v \"main\\|develop\" | xargs git branch -D",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "git:develop": "git checkout develop && git pull origin develop && git branch | grep -v \"main\\|staging\\|develop\" | xargs git branch -D",
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s ./public"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"
