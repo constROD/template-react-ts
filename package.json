@@ -20,17 +20,17 @@
     "dev": "react-scripts start",
     "clean": "rm -rf ./build",
     "build": "yarn clean && react-scripts build && compress-cra",
+    "start": "yarn build && yarn serve -s ./build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "analyze": "yarn build && source-map-explorer ./build/**/*.js",
+    "analyze": "yarn build && source-map-explorer ./build/js/*.js",
     "format": "prettier --write ./src/**/*.ts{,x}",
     "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
-    "pre-commit": "lint-staged --allow-empty",
-    "prepare": "husky install",
     "git:develop": "git checkout develop && git pull origin develop && git branch | grep -v \"main\\|staging\\|develop\" | xargs git branch -D",
-    "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "build-storybook -s ./public"
+    "storybook": "start-storybook -p 6006 -s ./build",
+    "build:storybook": "build-storybook -s ./build",
+    "pre-commit": "lint-staged --allow-empty",
+    "prepare": "husky install"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"
