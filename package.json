@@ -22,7 +22,7 @@
     "build": "yarn clean && react-scripts build && compress-cra",
     "start": "yarn build && yarn serve -s ./build",
     "test": "react-scripts test",
-    "analyze": "yarn build && source-map-explorer ./build/js/*.js",
+    "analyze": "yarn build && source-map-explorer ./build/static/js/*.js",
     "format": "prettier --write ./src/**/*.ts{,x}",
     "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
