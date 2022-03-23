@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import debounce from 'lodash/debounce';
-import { useCallback, useMemo, useState, useEffect, useRef } from 'react';
+import { useCallback, useState, useEffect, useRef } from 'react';
 import { useAsyncFn } from 'react-use';
 import {
   ICheckboxRadio,
@@ -13,73 +11,35 @@ import {
 import { IValidatorError } from 'shared/interfaces/Validator';
 
 /*
-	Parameters:
-		T - is a generic type that will indicate the interface of the object
-	
-		interface ICheckboxRadio {
-			id: string           	- id of the specific element.
-			value: string        	- option value of checkbox/radio.
-			checked: boolean     	- state of the element.
-		}
-	
-		interface IForm<T> {
-			defaultValues: T     	- The default values for all your fields (Note: if checkbox/radio type you need to put it to an array of object: CheckboxOrRadio[]).
-			validator?: Function 	- A validator that is created by yup library.
-			duration?: number    	- By default this is set to 300ms but you can set your preferred duration for debounce.
-		}
-
-	Returns:
-		interface IValidatorResponse {
-			id: string,
-			message: string
-		}
-
-		Returns <T> {
-			values: T        		 	- form values/states.
-			errors: null | Error[]- error values/states.
-			handle: Function     	- it has an object params that has a property of { event, options }. Handler function for all inputs.
-			setValue: Function   	- it has two params (id, newValue). id is the id of the element/state and newValue is the new value either string|boolean|number etc.
-															but for checkbox and radio newValue must be an object { value?, checked } value is optional while checked is boolean and required.
-			setValues: Function  	- it has an object params { ...newValues } that will override that currentState or specific property of the state.
-		}
-*/
-
-/*
 	Usage:
-		const defaultValues = useMemo(
-			() => ({
-				myText: "",
-				mySelect: "test2",
-				myCheckbox: [
-					{ id: "myCheckbox__0", value: "Check 0", checked: true },
-					{ id: "myCheckbox__1", value: "Check 1", checked: false }
-				],
-				myRadio: [
-					{ id: "myRadio__0", value: "Radio 0", checked: false },
-					{ id: "myRadio__1", value: "Radio 1", checked: true }
-				]
-			}),
-			[]
-		);
+		const defaultValues = {
+      myText: "",
+      mySelect: "test2",
+      myCheckbox: [
+        { id: "myCheckbox__0", value: "Check 0", checked: true },
+        { id: "myCheckbox__1", value: "Check 1", checked: false }
+      ],
+      myRadio: [
+        { id: "myRadio__0", value: "Radio 0", checked: false },
+        { id: "myRadio__1", value: "Radio 1", checked: true }
+      ]
+    }
 
 		const { values, errors, handle } = useForm({ defaultValues });
 
-		const memoizedHandle = useCallback(
-			(...args) => {
-				const [event, options] = args;
-				event.persist();
+		const { current: memoizedHandle } = useRef((...args: [React.ChangeEvent<IFormElements>]) => {
+      const [event, options] = args;
+      event.persist();
 
-				// add your additional logic here..
-				// if from outside it will run the logic every type.
-				const callback = () => {
-					// if from inside of callback this function will call depends on the duration of debounce you set
-					// setSomeState(options.someState)
-				};
+      // add your additional logic here..
+      // if from outside it will run the logic every type.
+      const callback = () => {
+        // if from inside of callback this function will call depends on the duration of debounce you set
+        // setSomeState(options.someState)
+      };
 
-				handle({ event, callback });
-			},
-			[handle]
-		);
+      handle({ event, callback });
+		});
 
 		console.log("values: ", values)
 		console.log("errors: ", errors)
@@ -124,43 +84,43 @@ export const useForm = <T>(options: IForm<T>): IFormReturn<T> => {
     ...DEFAULT_OPTIONS,
     ...options,
   };
+
   const [state, setState] = useState(defaultValues);
   const [errors, setErrors] = useState<IValidatorError[] | undefined>(undefined);
+
   const run = useRef(false);
 
-  const handle = useMemo(
-    () =>
-      debounce(({ event, callback }: IFormHandle) => {
-        const { target } = event;
-        const { type, id, value, checked } = target;
+  const { current: handle } = useRef(
+    debounce(({ event, callback }: IFormHandle) => {
+      const { target } = event;
+      const { type, id, value, checked } = target;
 
-        if (type === 'checkbox') {
-          setState((prevState: any) => {
-            const [checkboxKey, checkboxIndex]: any = id.split('__');
-            const newCheckbox: ICheckboxRadio[] = [...prevState[checkboxKey]];
-            newCheckbox[checkboxIndex] = {
-              ...newCheckbox[checkboxIndex],
-              value,
-              checked,
-            };
-            return { ...prevState, [checkboxKey]: newCheckbox };
-          });
-        } else if (type === 'radio') {
-          setState((prevState: any) => {
-            const [radioKey, radioIndex] = id.split('__');
-            const newRadio = [...prevState[radioKey]].reduce((accum, current, index) => {
-              if (Number(radioIndex) === Number(index))
-                return [...accum, { ...current, value, checked: true }];
-              return [...accum, { ...current, checked: false }];
-            }, []);
-            return { ...prevState, [radioKey]: newRadio };
-          });
-        } else {
-          setState(prevState => ({ ...prevState, [id]: value }));
-        }
-        if (callback) callback();
-      }, duration),
-    [duration]
+      if (type === 'checkbox') {
+        setState((prevState: any) => {
+          const [checkboxKey, checkboxIndex]: any = id.split('__');
+          const newCheckbox: ICheckboxRadio[] = [...prevState[checkboxKey]];
+          newCheckbox[checkboxIndex] = {
+            ...newCheckbox[checkboxIndex],
+            value,
+            checked,
+          };
+          return { ...prevState, [checkboxKey]: newCheckbox };
+        });
+      } else if (type === 'radio') {
+        setState((prevState: any) => {
+          const [radioKey, radioIndex] = id.split('__');
+          const newRadio = [...prevState[radioKey]].reduce((accum, current, index) => {
+            if (Number(radioIndex) === Number(index))
+              return [...accum, { ...current, value, checked: true }];
+            return [...accum, { ...current, checked: false }];
+          }, []);
+          return { ...prevState, [radioKey]: newRadio };
+        });
+      } else {
+        setState(prevState => ({ ...prevState, [id]: value }));
+      }
+      if (callback) callback();
+    }, duration)
   );
 
   const setValue = useCallback((id: string, newValue: any) => {
@@ -211,17 +171,17 @@ export const useForm = <T>(options: IForm<T>): IFormReturn<T> => {
     if (run.current) {
       validatorAsync(state);
     }
-    run.current = true;
+
+    return () => {
+      run.current = true;
+    };
   }, [state, validatorAsync]);
 
-  return useMemo(
-    () => ({
-      values: state,
-      errors,
-      handle,
-      setValue,
-      setValues,
-    }),
-    [state, errors, handle, setValue, setValues]
-  );
+  return {
+    values: state,
+    errors,
+    handle,
+    setValue,
+    setValues,
+  };
 };

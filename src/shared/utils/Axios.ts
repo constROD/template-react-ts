@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-param-reassign */
-
 import LocalStorageUtil from './LocalStorage';
 
 import axios, { AxiosResponse } from 'axios';
