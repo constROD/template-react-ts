@@ -1,7 +1,5 @@
 FROM node:16-alpine3.14 AS builder
 
-ENV SKIP_PREFLIGHT_CHECK=true
-
 # Create /app folder and add permission on the /app folder.
 RUN mkdir -p /app && chmod -R 775 /app
 
@@ -9,10 +7,12 @@ RUN mkdir -p /app && chmod -R 775 /app
 WORKDIR /app
 
 # Copy all required files from the repository for building the application.
+COPY vite.config.ts vite.config.ts
 COPY tsconfig.json tsconfig.json
+COPY tsconfig.node.json tsconfig.node.json
 COPY package.json package.json
 COPY src src
-COPY public public
+COPY index.html index.html
 
 # Install dependencies and build the application.
 RUN yarn && yarn build

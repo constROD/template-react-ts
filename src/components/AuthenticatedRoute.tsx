@@ -1,11 +1,11 @@
 import React from 'react';
 import { Navigate, useLocation, Outlet } from 'react-router-dom';
 import { ROUTES } from 'shared/constants/Routes';
-import { useAppSelector } from 'shared/hooks/useRedux';
+import useAppStore from 'shared/store';
 
 const AuthenticatedRoute: React.FC = () => {
   const location = useLocation();
-  const isAuth = useAppSelector(state => state.user.isAuth);
+  const isAuth = useAppStore(state => state.isAuth);
 
   if (!isAuth) return <Navigate to={ROUTES.LOGIN} state={{ from: location }} />;
 

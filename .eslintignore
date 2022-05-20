@@ -1,35 +1,49 @@
 # Dependencies
-/node_modules
+node_modules
 
 # Configs
-/commitlint.config.js
-/jest.*.ts
-/Dockerfile
+Dockerfile
+jest.*.ts
+*.config.js
+*.config.ts
+*.html
 
 # Caches
-/.eslintcache
-/.vscode
+.eslintcache
+.vscode
 
 # Testings
-/coverage
+coverage
 
 # Builds
-/build
+build
+dist
 
 # Miscellaneous
-/.DS_Store
-/.env
-/.env.*
-/.npmrc
+.DS_Store
+.env
+.env.*
+.npmrc
 /package-lock.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # Logs
-/*-error.log
-/*-debug.log
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Types
 
 # Ignores
-/.dockerignore
-/.prettierignore
-/.eslintignore
+.dockerignore
+.prettierignore
+.eslintignore
