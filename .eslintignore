@@ -24,7 +24,8 @@ dist
 .env
 .env.*
 .npmrc
-/package-lock.json
+*-lock.json
+*.lock
 .idea
 *.suo
 *.ntvs*

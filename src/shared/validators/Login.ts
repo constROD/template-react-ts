@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { ILoginForm } from 'shared/interfaces/Auth';
 import { IValidatorError, IValidatorResponse } from 'shared/interfaces/Validator';
 import * as yup from 'yup';
