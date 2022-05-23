@@ -12,10 +12,15 @@ export type IStoreSlice<T extends object, E extends object = T> = (
 
 export interface ITestState {
   /* States */
-  data: string;
+  price: number;
+
+  /* Computed States */
+  computed: {
+    totalPrice: number;
+  };
 
   /* Functions */
-  changeData: (newData: string) => IStoreResponse;
+  setPrice: (setPrice: number) => IStoreResponse | undefined;
 }
 
 export interface IUserState {
@@ -23,8 +28,8 @@ export interface IUserState {
   isAuth: boolean;
 
   /* Functions */
-  login: () => IStoreResponse;
-  logout: () => IStoreResponse;
+  login: () => IStoreResponse | undefined;
+  logout: () => IStoreResponse | undefined;
 }
 
 export type IStoreState = ITestState & IUserState;

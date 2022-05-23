@@ -3,16 +3,23 @@ import { ITestState, IStoreSlice } from 'shared/interfaces/Store';
 
 const TestSlice: IStoreSlice<ITestState> = (set, get) => ({
   /* States */
-  data: '',
+  price: 0,
+
+  /* Computed States */
+  computed: {
+    get totalPrice() {
+      return get().price + 100;
+    },
+  },
 
   /* Functions */
-  changeData: (newData: string) => {
+  setPrice: (payload: number) => {
     set(
       immer((state: ITestState) => {
-        state.data = newData;
+        state.price = payload;
       })
     );
-    return { error: undefined, data: get().data };
+    return { error: undefined, data: get().price };
   },
 });
 
