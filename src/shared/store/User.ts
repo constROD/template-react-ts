@@ -1,28 +1,32 @@
 import immer from 'immer';
-import { IStoreSlice, IUserState } from 'shared/interfaces/Store';
+import { IUserStore } from 'shared/interfaces/Store';
+import create from 'zustand';
 
-const UserSlice: IStoreSlice<IUserState> = (set, get) => ({
+export const useUserStore = create<IUserStore>((set, get) => ({
   /* States */
-  isAuth: false,
+  user: null,
+
+  /* Computed States */
+  computed: {
+    get isSignedIn() {
+      return !!get().user;
+    },
+  },
 
   /* Functions */
   login: () => {
     set(
-      immer((state: IUserState) => {
-        state.isAuth = true;
+      immer((state: IUserStore) => {
+        state.user = 'constROD';
       })
     );
-    return { error: undefined, data: get().isAuth };
   },
 
   logout: () => {
     set(
-      immer((state: IUserState) => {
-        state.isAuth = false;
+      immer((state: IUserStore) => {
+        state.user = null;
       })
     );
-    return { error: undefined, data: get().isAuth };
   },
-});
-
-export default UserSlice;
+}));

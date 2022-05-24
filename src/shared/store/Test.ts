@@ -1,7 +1,8 @@
 import immer from 'immer';
-import { ITestState, IStoreSlice } from 'shared/interfaces/Store';
+import { ITestStore } from 'shared/interfaces/Store';
+import create from 'zustand';
 
-const TestSlice: IStoreSlice<ITestState> = (set, get) => ({
+export const useTestStore = create<ITestStore>((set, get) => ({
   /* States */
   price: 0,
 
@@ -15,12 +16,10 @@ const TestSlice: IStoreSlice<ITestState> = (set, get) => ({
   /* Functions */
   setPrice: (payload: number) => {
     set(
-      immer((state: ITestState) => {
+      immer((state: ITestStore) => {
         state.price = payload;
       })
     );
     return { error: undefined, data: get().price };
   },
-});
-
-export default TestSlice;
+}));

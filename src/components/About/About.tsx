@@ -4,23 +4,23 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAsyncFn } from 'react-use';
 import { ROUTES } from 'shared/constants/Routes';
-import useAppStore from 'shared/store';
+import { useUserStore } from 'shared/store';
 import CommonUtil from 'shared/utils/Common';
 
 const About: React.FC = () => {
   const navigate = useNavigate();
-  const logout = useAppStore(state => state.logout);
+  const logout = useUserStore(state => state.logout);
 
   // eslint-disable-next-line @typescript-eslint/require-await
   const [, logoutAsync] = useAsyncFn(async () => {
-    const { error } = logout();
+    const response = logout();
 
-    if (!error) return navigate(ROUTES.LOGIN);
+    if (!response) return navigate(ROUTES.LOGIN);
 
     CommonUtil.logger({
       path: 'components/About/About.tsx',
       event: 'loginAsync',
-      log: error,
+      log: response.error,
     });
   });
 

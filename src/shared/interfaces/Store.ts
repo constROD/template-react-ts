@@ -1,16 +1,9 @@
-import { GetState, SetState } from 'zustand';
-
-interface IStoreResponse<T = any> {
+type IStoreResponse<T = any> = {
   data: T;
   error: any | null;
-}
+} | void;
 
-export type IStoreSlice<T extends object, E extends object = T> = (
-  set: SetState<E extends T ? E : E & T>,
-  get: GetState<E extends T ? E : E & T>
-) => T;
-
-export interface ITestState {
+export interface ITestStore {
   /* States */
   price: number;
 
@@ -20,16 +13,19 @@ export interface ITestState {
   };
 
   /* Functions */
-  setPrice: (setPrice: number) => IStoreResponse | undefined;
+  setPrice: (setPrice: number) => IStoreResponse;
 }
 
-export interface IUserState {
+export interface IUserStore {
   /* States */
-  isAuth: boolean;
+  user: string | null;
+
+  /* Computed States */
+  computed: {
+    isSignedIn: boolean;
+  };
 
   /* Functions */
-  login: () => IStoreResponse | undefined;
-  logout: () => IStoreResponse | undefined;
+  login: () => IStoreResponse;
+  logout: () => IStoreResponse;
 }
-
-export type IStoreState = ITestState & IUserState;

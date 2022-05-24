@@ -7,13 +7,13 @@ import { ROUTES } from 'shared/constants/Routes';
 import { useForm } from 'shared/hooks/useForm';
 import { ILoginForm } from 'shared/interfaces/Auth';
 import { IFormElements } from 'shared/interfaces/Form';
-import useAppStore from 'shared/store';
+import { useUserStore } from 'shared/store';
 import CommonUtil from 'shared/utils/Common';
 import { loginValidator } from 'shared/validators/Login';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const login = useAppStore(state => state.login);
+  const login = useUserStore(state => state.login);
 
   const defaultValues: ILoginForm = {
     email: '',
@@ -35,14 +35,14 @@ const Login: React.FC = () => {
   const [, loginAsync] = useAsyncFn(async (...args: [ILoginForm]) => {
     const [] = args;
 
-    const { error } = login();
+    const response = login();
 
-    if (!error) return navigate(ROUTES.HOME);
+    if (!response) return navigate(ROUTES.HOME);
 
     CommonUtil.logger({
       path: 'components/Login/Login.tsx',
       event: 'loginAsync',
-      log: error,
+      log: response.error,
     });
   });
 

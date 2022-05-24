@@ -1,13 +1,13 @@
 import React from 'react';
 import { Navigate, useLocation, Outlet } from 'react-router-dom';
 import { ROUTES } from 'shared/constants/Routes';
-import useAppStore from 'shared/store';
+import { useUserStore } from 'shared/store';
 
 const AuthenticatedRoute: React.FC = () => {
   const location = useLocation();
-  const isAuth = useAppStore(state => state.isAuth);
+  const { isSignedIn } = useUserStore(state => state.computed);
 
-  if (!isAuth) return <Navigate to={ROUTES.LOGIN} state={{ from: location }} />;
+  if (!isSignedIn) return <Navigate to={ROUTES.LOGIN} state={{ from: location }} />;
 
   return <Outlet />;
 };

@@ -1,5 +1,5 @@
-import App from './App';
-import { GlobalStyle, theme, ThemeProvider } from './shared/theme';
+import App from '../App';
+import { ThemeProvider, GlobalStyle, theme } from '../shared/theme';
 
 import { render, screen } from '@testing-library/react';
 import React from 'react';
