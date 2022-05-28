@@ -15,11 +15,11 @@
   "author": "Rodrick Alcantara <rialcantara21@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
     "dev": "vite",
     "clean": "rm -rf ./build",
     "build": "yarn clean && tsc && vite build",
     "preview": "vite preview",
+    "test": "jest",
     "format": "prettier --write ./src/**/*.ts{,x}",
     "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
