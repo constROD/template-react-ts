@@ -1,4 +1,4 @@
-name: Create Release
+name: 'Create Release'
 on:
   push:
     branches:
@@ -8,7 +8,9 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
 
       - name: Conventional Changelog
         uses: TriPSs/conventional-changelog-action@v3
@@ -17,14 +19,14 @@ jobs:
           git-message: 'chore(release): {version} [no ci]'
           git-user-email: rialcantara21@gmail.com
           git-user-name: Rodrick Alcantara
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file: 'false'
 
       - name: Create New Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
