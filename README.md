@@ -2,6 +2,8 @@
 
 ## Prerequisites
 
+- Download extension **ESLint** and **Prettier - Code formatter** in your VSCode.
+
 - **(Required for MacOSX):** Run this to give permission husky to run pre-commit hook.
 
 ```bash
