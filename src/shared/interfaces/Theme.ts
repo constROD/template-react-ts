@@ -3,10 +3,16 @@ export interface IColorTheme {
 }
 
 export interface IScreenTheme {
-  bpSmall: string;
-  bpMedium: string;
-  bpLarge: string;
-  bpXlarge: string;
+  xSmall: number;
+  small: number;
+  medium: number;
+  large: number;
+  xLarge: number;
+  xSmallMedia: string;
+  smallMedia: string;
+  mediumMedia: string;
+  largeMedia: string;
+  xLargeMedia: string;
 }
 
 export interface ITheme {
