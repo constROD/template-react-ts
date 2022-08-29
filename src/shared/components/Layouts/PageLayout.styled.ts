@@ -1,6 +1,6 @@
 import { styled } from 'shared/theme';
 
-export const LayoutWrapper = styled.div`
+export const PageLayoutWrapper = styled.div`
   // Default Mobile
 
   ${({ theme }) => theme.screens.xSmallMedia} {

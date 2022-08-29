@@ -1,4 +1,3 @@
-import Layout from 'components/Layout';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { ROUTES } from 'shared/constants/Routes';
@@ -11,11 +10,7 @@ const LoginPage: React.FC = () => {
 
   if (isSignedIn) return <Navigate to={ROUTES.HOME} />;
 
-  return (
-    <Layout>
-      <AsyncLogin />
-    </Layout>
-  );
+  return <AsyncLogin />;
 };
 
 export default LoginPage;
