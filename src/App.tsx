@@ -13,13 +13,13 @@ const App: React.FC = () => {
   return (
     <RootLayout>
       <Routes>
-        <Route element={<PageLayout />}>
-          <Route element={<AuthenticatedRoute />}>
+        <Route element={<AuthenticatedRoute />}>
+          <Route element={<PageLayout />}>
             <Route path={ROUTES.HOME} element={<HomePage />} />
             <Route path={ROUTES.ABOUT} element={<AboutPage />} />
           </Route>
-          <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         </Route>
+        <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </RootLayout>

@@ -26,7 +26,10 @@ const Home: React.FC = () => {
 
   return (
     <HomeWrapper>
-      This is HomePage. <button onClick={logoutAsync}>Logout</button>
+      <div className="content">
+        This is HomePage. <button onClick={logoutAsync}>Logout</button>
+        <button onClick={() => navigate(ROUTES.ABOUT)}>Go to About</button>
+      </div>
     </HomeWrapper>
   );
 };

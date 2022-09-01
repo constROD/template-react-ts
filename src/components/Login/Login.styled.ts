@@ -1,21 +1,29 @@
 import { styled } from 'shared/theme';
 
 export const LoginWrapper = styled.div`
-  // Default Mobile
+  .content {
+    width: 100%;
+    margin: 0 auto;
+  }
 
   ${({ theme }) => theme.screens.xSmallMedia} {
-    // Mobile 375px
+    .content {
+    }
   }
   ${({ theme }) => theme.screens.smallMedia} {
-    // Mobile 576px
+    .content {
+    }
   }
   ${({ theme }) => theme.screens.mediumMedia} {
-    // Tablet 768px
+    .content {
+    }
   }
   ${({ theme }) => theme.screens.largeMedia} {
-    // Desktop 992px
+    .content {
+    }
   }
   ${({ theme }) => theme.screens.xLargeMedia} {
-    // Desktop 1200px
+    .content {
+    }
   }
 `;

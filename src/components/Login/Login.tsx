@@ -50,9 +50,11 @@ const Login: React.FC = () => {
 
   return (
     <LoginWrapper>
-      <input id="email" defaultValue={values.email} onChange={memoizedHandle} />
-      <input id="password" defaultValue={values.password} onChange={memoizedHandle} />
-      <button onClick={loginSubmit}>Login</button>
+      <div className="content">
+        <input id="email" defaultValue={values.email} onChange={memoizedHandle} />
+        <input id="password" defaultValue={values.password} onChange={memoizedHandle} />
+        <button onClick={loginSubmit}>Login</button>
+      </div>
     </LoginWrapper>
   );
 };

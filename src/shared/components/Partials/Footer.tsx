@@ -3,7 +3,11 @@ import { FooterWrapper } from './Footer.styled';
 import React from 'react';
 
 const Footer: React.FC = () => {
-  return <FooterWrapper>Footer</FooterWrapper>;
+  return (
+    <FooterWrapper>
+      <div className="content">Footer</div>
+    </FooterWrapper>
+  );
 };
 
 export default Footer;

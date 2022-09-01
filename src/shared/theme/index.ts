@@ -14,13 +14,13 @@ const themeScreens: IScreenTheme = {
   xSmall: 375,
   small: 576,
   medium: 768,
-  large: 992,
-  xLarge: 1200,
+  large: 1024,
+  xLarge: 1440,
   xSmallMedia: '@media (min-width: 375px)',
   smallMedia: '@media (min-width: 576px)',
   mediumMedia: '@media (min-width: 768px)',
-  largeMedia: '@media (min-width: 992px)',
-  xLargeMedia: '@media (min-width: 1200px)',
+  largeMedia: '@media (min-width: 1024px)',
+  xLargeMedia: '@media (min-width: 1440px)',
 };
 
 export const colors = themeColors;
