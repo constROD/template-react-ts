@@ -6,20 +6,23 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AuthenticatedRoute from 'shared/components/AuthenticatedRoute';
 import PageLayout from 'shared/components/Layouts/PageLayout';
+import RootLayout from 'shared/components/Layouts/RootLayout';
 import { ROUTES } from 'shared/constants/Routes';
 
 const App: React.FC = () => {
   return (
-    <Routes>
-      <Route element={<PageLayout />}>
-        <Route element={<AuthenticatedRoute />}>
-          <Route path={ROUTES.HOME} element={<HomePage />} />
-          <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+    <RootLayout>
+      <Routes>
+        <Route element={<PageLayout />}>
+          <Route element={<AuthenticatedRoute />}>
+            <Route path={ROUTES.HOME} element={<HomePage />} />
+            <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+          </Route>
+          <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         </Route>
-        <Route path={ROUTES.LOGIN} element={<LoginPage />} />
-      </Route>
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </RootLayout>
   );
 };
 
