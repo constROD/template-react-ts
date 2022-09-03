@@ -3,6 +3,7 @@
 ## Prerequisites
 
 - Download extension **ESLint** and **Prettier - Code formatter** in your VSCode.
+- Install **node** >= v16.13.0
 
 - **(Required for MacOSX):** Run this to give permission husky to run pre-commit hook.
 
@@ -11,16 +12,16 @@ $ chmod ug+x .husky/*
 $ chmod ug+x .git/hooks/*
 ```
 
-- **(Optional):** Do this if you are using `nvm`.
+- **(Optional):** Do this if you are using **nvm**.
 
 ```bash
-$ nvm use
+$ yarn setup
 ```
 
 - Install Dependencies.
 
 ```bash
-$ yarn
+$ yarn or yarn install
 ```
 
 - Create `.env` file for environment variables. `.env-sample` are the required environment variables.
@@ -40,7 +41,7 @@ $ yarn dev
 $ yarn build
 ```
 
-- Run.
+- Run in **production** mode.
 
 ```bash
 $ yarn start
@@ -54,7 +55,7 @@ $ yarn start
 $ docker build -t {image_name} .
 ```
 
-- Run.
+- Run in **development/production** mode.
 
 ```bash
 $ docker run -d -p {machine_port}:80 --name {container_name} {image_name}
