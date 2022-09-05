@@ -8,6 +8,7 @@
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Regular.woff2') format('woff2'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Regular.woff') format('woff'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Regular.otf') format('opentype'),
+    url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Regular.ttf') format('truetype'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Regular.svg#Gilroy') format('svg');
 }
 
@@ -21,6 +22,7 @@
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Medium.woff2') format('woff2'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Medium.woff') format('woff'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Medium.otf') format('opentype'),
+    url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Medium.ttf') format('truetype'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Medium.svg#Gilroy') format('svg');
 }
 
@@ -34,5 +36,6 @@
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Bold.woff2') format('woff2'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Bold.woff') format('woff'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Bold.otf') format('opentype'),
+    url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Bold.ttf') format('truetype'),
     url('https://d1nzwmcp9dgg5h.cloudfront.net/fonts/Gilroy-Bold.svg#Gilroy') format('svg');
 } */
