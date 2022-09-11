@@ -46,6 +46,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     -ms-overflow-style: none; 
     scrollbar-width: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
   }
   *::-webkit-scrollbar {
     display: none;
