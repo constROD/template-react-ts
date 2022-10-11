@@ -3,16 +3,16 @@ export interface IColorTheme {
 }
 
 export interface IScreenTheme {
-  xSmall: number;
   small: number;
   medium: number;
   large: number;
   xLarge: number;
-  xSmallMedia: string;
+  xxLarge: number;
   smallMedia: string;
   mediumMedia: string;
   largeMedia: string;
   xLargeMedia: string;
+  xxLargeMedia: string;
 }
 
 export interface ITheme {

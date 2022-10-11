@@ -11,16 +11,16 @@ const themeColors: IColorTheme = {
 };
 
 const themeScreens: IScreenTheme = {
-  xSmall: 375,
-  small: 576,
+  small: 640,
   medium: 768,
   large: 1024,
-  xLarge: 1440,
-  xSmallMedia: '@media (min-width: 375px)',
-  smallMedia: '@media (min-width: 576px)',
+  xLarge: 1280,
+  xxLarge: 1536,
+  smallMedia: '@media (min-width: 640px)',
   mediumMedia: '@media (min-width: 768px)',
   largeMedia: '@media (min-width: 1024px)',
-  xLargeMedia: '@media (min-width: 1440px)',
+  xLargeMedia: '@media (min-width: 1280px)',
+  xxLargeMedia: '@media (min-width: 1536px)',
 };
 
 export const colors = themeColors;
