@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 
 export const useImageLoaded = () => {
   const [loading, setLoading] = useState(true);
@@ -14,9 +14,12 @@ export const useImageLoaded = () => {
     }
   });
 
-  return {
-    ref,
-    loading,
-    onLoad,
-  };
+  return useMemo(
+    () => ({
+      ref,
+      loading,
+      onLoad,
+    }),
+    [loading]
+  );
 };

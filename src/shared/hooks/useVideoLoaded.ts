@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import { useEffectOnce } from 'react-use';
 
 export const useVideoLoaded = () => {
@@ -16,8 +16,11 @@ export const useVideoLoaded = () => {
     }
   });
 
-  return {
-    ref,
-    loading,
-  };
+  return useMemo(
+    () => ({
+      ref,
+      loading,
+    }),
+    [loading]
+  );
 };

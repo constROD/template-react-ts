@@ -1,5 +1,5 @@
 import debounce from 'lodash/debounce';
-import { useCallback, useState, useEffect, useRef } from 'react';
+import { useCallback, useState, useEffect, useRef, useMemo } from 'react';
 import { useAsyncFn } from 'react-use';
 import {
   ICheckboxRadio,
@@ -177,11 +177,14 @@ export const useForm = <T>(options: IForm<T>): IFormReturn<T> => {
     };
   }, [state, validatorAsync]);
 
-  return {
-    values: state,
-    errors,
-    handle,
-    setValue,
-    setValues,
-  };
+  return useMemo(
+    () => ({
+      values: state,
+      errors,
+      handle,
+      setValue,
+      setValues,
+    }),
+    [state, errors, handle, setValue, setValues]
+  );
 };
