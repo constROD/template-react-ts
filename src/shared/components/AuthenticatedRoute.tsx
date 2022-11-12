@@ -5,9 +5,9 @@ import { useUserStore } from 'shared/store';
 
 const AuthenticatedRoute: React.FC = () => {
   const location = useLocation();
-  const { isSignedIn } = useUserStore(state => state.computed);
+  const { computed } = useUserStore(state => state);
 
-  if (!isSignedIn) return <Navigate to={ROUTES.LOGIN} state={{ from: location }} />;
+  if (!computed.isSignedIn) return <Navigate to={ROUTES.LOGIN} state={{ from: location }} />;
 
   return <Outlet />;
 };
