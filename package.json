@@ -90,7 +90,7 @@
     "vite-tsconfig-paths": "^3.4.1"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx}": "eslint --cache --fix",
+    "src/**/*.{js,ts,jsx,tsx}": "eslint --cache --fix",
     "**/*": "prettier --write --ignore-unknown"
   }
 }
