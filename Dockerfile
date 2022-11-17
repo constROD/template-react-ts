@@ -1,5 +1,9 @@
 FROM node:16-alpine3.14 AS builder
 
+# Environment Variables
+ARG APP_ENV
+ENV APP_ENV=${APP_ENV}
+
 # Create /app folder and add permission on the /app folder.
 RUN mkdir -p /app && chmod -R 775 /app
 
@@ -11,10 +15,12 @@ COPY vite.config.ts vite.config.ts
 COPY tsconfig.json tsconfig.json
 COPY tsconfig.node.json tsconfig.node.json
 COPY package.json package.json
+COPY yarn.lock yarn.lock
 COPY src src
 COPY index.html index.html
 
 # Install dependencies and build the application.
+RUN echo ${APP_ENV} | base64 -d >.env
 RUN yarn && yarn build
 
 FROM nginx:1.19.6-alpine
