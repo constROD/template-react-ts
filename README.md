@@ -15,20 +15,20 @@ $ chmod ug+x .git/hooks/*
 - **(Optional):** Do this if you are using **nvm**.
 
 ```bash
-$ yarn setup
+$ pnpm setup
 ```
 
 - Install Dependencies.
 
 ```bash
-$ yarn or yarn install
+$ pnpm install
 ```
 
 - Create `.env` file for environment variables. `.env-sample` are the required environment variables.
 - Run in **development** mode.
 
 ```bash
-$ yarn dev
+$ pnpm dev
 ```
 
 ## Run in production mode.
@@ -38,13 +38,13 @@ $ yarn dev
 - Build the application.
 
 ```bash
-$ yarn build
+$ pnpm build
 ```
 
 - Run in **production** mode.
 
 ```bash
-$ yarn start
+$ pnpm start
 ```
 
 - **with Docker:** Download `Docker` in your machine or server.
