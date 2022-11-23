@@ -41,12 +41,6 @@ $ pnpm dev
 $ pnpm build
 ```
 
-- Run in **production** mode.
-
-```bash
-$ pnpm start
-```
-
 - **with Docker:** Download `Docker` in your machine or server.
 
 - Build the application.
