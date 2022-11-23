@@ -15,7 +15,7 @@ $ chmod ug+x .git/hooks/*
 - **(Optional):** Do this if you are using **nvm**.
 
 ```bash
-$ pnpm setup
+$ nvm use or nvm use 16.13.0
 ```
 
 - Install Dependencies.

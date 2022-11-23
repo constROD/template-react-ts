@@ -15,7 +15,6 @@
   "author": "Rodrick Alcantara <rialcantara21@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "setup": "cat .nvmrc | xargs nvm use",
     "dev": "vite",
     "clean": "rm -rf ./build",
     "build": "pnpm clean && tsc && vite build",
