@@ -4,6 +4,9 @@ FROM node:16-alpine3.14 AS builder
 ARG APP_ENV
 ENV APP_ENV=${APP_ENV}
 
+# Install pnpm globally
+RUN npm install -g pnpm@7.17.0
+
 # Create /app folder and add permission on the /app folder.
 RUN mkdir -p /app && chmod -R 775 /app
 
@@ -15,13 +18,13 @@ COPY vite.config.ts vite.config.ts
 COPY tsconfig.json tsconfig.json
 COPY tsconfig.node.json tsconfig.node.json
 COPY package.json package.json
-COPY yarn.lock yarn.lock
+COPY pnpm-lock.yaml pnpm-lock.yaml
 COPY src src
 COPY index.html index.html
 
 # Install dependencies and build the application.
 RUN echo ${APP_ENV} | base64 -d >.env
-RUN yarn && yarn build
+RUN pnpm install && pnpm build
 
 FROM nginx:1.19.6-alpine
 

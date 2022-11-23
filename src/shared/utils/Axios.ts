@@ -1,7 +1,7 @@
 import LocalStorageUtil from './LocalStorage';
 
 import axios, { AxiosResponse } from 'axios';
-import { XHeader, HTTP_RESPONSES, HttpResponseType, Code } from 'shared/constants/Http';
+import { XHeader, HTTP_RESPONSES, Code } from 'shared/constants/Http';
 import { AuthLocalStorage } from 'shared/constants/LocalStorage';
 import { IHttpOptions, IHttpRequest, IHttpResponse } from 'shared/interfaces/Http';
 
@@ -10,7 +10,7 @@ const PublicInstance = axios.create();
 
 const defaultError = (errorData: any = {}) => ({
   data: {
-    ...HTTP_RESPONSES[HttpResponseType.ServerError],
+    ...HTTP_RESPONSES.ServerError,
     message: `Something went wrong. Please try again.`,
     ...errorData,
   },

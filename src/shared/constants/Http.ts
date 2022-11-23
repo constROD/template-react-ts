@@ -29,83 +29,68 @@ export enum Code {
   UnprocessableEntity = 11,
 }
 
-export enum HttpResponseType {
-  ServerError = 'serverError',
-  Success = 'success',
-  Created = 'created',
-  Updated = 'updated',
-  Archived = 'archived',
-  Deleted = 'deleted',
-  Restored = 'restored',
-  BadRequest = 'badRequest',
-  Unauthorized = 'unauthorized',
-  Conflict = 'conflict',
-  NotFound = 'notFound',
-  UnprocessableEntity = 'unprocessableEntity',
-}
-
 export enum XHeader {
   IdToken = 'X-ID-TOKEN',
   AccessToken = 'X-ACCESS-TOKEN',
 }
 
 export const HTTP_RESPONSES = {
-  serverError: {
+  ServerError: {
     message: 'Server Error',
     statusCode: 500,
     code: 0,
   },
-  success: {
+  Success: {
     message: 'Success',
     statusCode: 200,
     code: 1,
   },
-  created: {
+  Created: {
     message: 'Created',
     statusCode: 201,
     code: 2,
   },
-  updated: {
+  Updated: {
     message: 'Updated',
     statusCode: 200,
     code: 3,
   },
-  archived: {
+  Archived: {
     message: 'Archived',
     statusCode: 200,
     code: 4,
   },
-  deleted: {
+  Deleted: {
     message: 'Deleted',
     statusCode: 200,
     code: 5,
   },
-  restored: {
+  Restored: {
     message: 'Restored',
     statusCode: 200,
     code: 6,
   },
-  badRequest: {
+  BadRequest: {
     message: 'Bad Request',
     statusCode: 400,
     code: 7,
   },
-  unauthorized: {
+  Unauthorized: {
     message: 'Unauthorized',
     statusCode: 401,
     code: 8,
   },
-  conflict: {
+  Conflict: {
     message: 'Conflict',
     statusCode: 409,
     code: 9,
   },
-  notFound: {
+  NotFound: {
     message: 'Not Found',
     statusCode: 404,
     code: 10,
   },
-  unprocessableEntity: {
+  UnprocessableEntity: {
     message: 'Unprocessable Entity',
     statusCode: 422,
     code: 11,
