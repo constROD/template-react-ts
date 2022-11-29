@@ -1,1 +1,1 @@
-export const APP_ZONE = process.env.APP_ZONE || '';
+export const STAGE = process.env.STAGE || '';

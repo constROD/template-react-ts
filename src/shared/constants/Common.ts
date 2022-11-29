@@ -1,5 +1,5 @@
-export enum Zones {
-  Develop = 'develop',
+export enum Stages {
+  Dev = 'dev',
   Staging = 'staging',
-  Production = 'prod',
+  Prod = 'prod',
 }

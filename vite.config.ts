@@ -31,7 +31,7 @@ export default ({ mode }) => {
       }),
       ViteEjsPlugin(() => {
         return {
-          APP_ZONE: process.env.APP_ZONE,
+          STAGE: process.env.STAGE,
         };
       }),
     ],
@@ -50,7 +50,7 @@ export default ({ mode }) => {
     define: {
       // handle env variables here since import.meta conflicts with jest
       'process.env.MODE': `"${mode}"`,
-      'process.env.APP_ZONE': `"${process.env.APP_ZONE}"`,
+      'process.env.STAGE': `"${process.env.STAGE}"`,
     },
     optimizeDeps: {
       esbuildOptions: {
