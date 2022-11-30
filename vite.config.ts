@@ -1,13 +1,22 @@
 import { defineConfig } from 'vite';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import react from '@vitejs/plugin-react';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import svgr from 'vite-plugin-svgr';
 import viteCompression from 'vite-plugin-compression';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
 
-dotenv.config();
+config();
+
+const forDockerDevelopment = () => {
+  if (process.env.MACHINE !== 'docker') return {};
+  return {
+    watch: {
+      usePolling: true,
+    },
+  };
+};
 
 export default ({ mode }) => {
   return defineConfig({
@@ -38,7 +47,7 @@ export default ({ mode }) => {
     base: '/',
     server: {
       port: Number(process.env.PORT),
-      strictPort: true,
+      ...forDockerDevelopment(),
     },
     preview: {
       port: 8080,

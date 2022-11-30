@@ -6,12 +6,13 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile
     ports:
-      - '3001:${PORT}'
+      - '${PORT}:${PORT}'
     stdin_open: true
     tty: true
     volumes:
-      - ./:/home/dev/app
-      - /home/dev/app/node_modules
+      - ./:/app
+      - /app/node_modules
     environment:
+      MACHINE: docker
       PORT: ${PORT}
       STAGE: ${STAGE}
