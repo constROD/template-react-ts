@@ -38,6 +38,10 @@ export default ({ mode }) => {
     base: '/',
     server: {
       port: Number(process.env.PORT),
+      watch: {
+        usePolling: true,
+      },
+      strictPort: true,
     },
     preview: {
       port: 8080,

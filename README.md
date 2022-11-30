@@ -59,13 +59,19 @@ $ docker compose build or pnpm docker:local build
 $ docker compose up -d or pnpm docker:local up -d
 ```
 
+- Check the container logs.
+
+```bash
+$ docker logs <repository-name>-web-1
+```
+
 - Stop the container.
 
 ```bash
 $ docker compose down or pnpm docker:local down
 ```
 
-- Access the container.
+- If you want to access the container.
 
 ```bash
 $ docker exec -it <repository-name>-web-1 bash

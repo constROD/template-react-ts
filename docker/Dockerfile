@@ -20,3 +20,5 @@ COPY package.json /home/dev/app
 
 # Install dependencies.
 RUN pnpm i
+
+CMD ["pnpm", "dev"]

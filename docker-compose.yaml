@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile
     ports:
-      - '${PORT}:${PORT}'
+      - '3001:${PORT}'
     stdin_open: true
     tty: true
     volumes:
