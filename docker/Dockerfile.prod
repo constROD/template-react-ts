@@ -1,5 +1,8 @@
 FROM node:16-buster-slim AS builder
 
+# Install necessary tools for installion.
+RUN apt update && apt install -y g++ make python3-dev
+
 # Go to /app directory.
 WORKDIR /app
 
@@ -10,15 +13,15 @@ RUN chmod -R 775 /app
 RUN npm i -g pnpm@7.17.0
 
 # Copy all required files from the repository for building the application.
-COPY postcss.config.js postcss.config.js
-COPY tailwind.config.js tailwind.config.js
-COPY vite.config.ts vite.config.ts
-COPY tsconfig.json tsconfig.json
-COPY tsconfig.node.json tsconfig.node.json
-COPY package.json package.json
-COPY pnpm-lock.yaml pnpm-lock.yaml
-COPY src src
-COPY index.html index.html
+COPY postcss.config.js /app
+COPY tailwind.config.js /app
+COPY vite.config.ts /app
+COPY tsconfig.json /app
+COPY tsconfig.node.json /app
+COPY package.json /app
+COPY pnpm-lock.yaml /app
+COPY src /app
+COPY index.html /app
 
 # Install dependencies and build the application.
 RUN pnpm i

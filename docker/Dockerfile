@@ -1,5 +1,8 @@
 FROM node:16-buster-slim
 
+# Install necessary tools for installion.
+RUN apt update && apt install -y g++ make python3-dev
+
 # Go to /app directory.
 WORKDIR /app
 
@@ -10,7 +13,7 @@ RUN chmod -R 775 /app
 RUN npm i -g pnpm@7.17.0
 
 # Copy all required files for installation.
-COPY package.json /home/dev/app
+COPY package.json /app
 
 # Install dependencies.
 RUN pnpm i
