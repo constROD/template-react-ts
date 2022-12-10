@@ -1,4 +1,5 @@
-import { ILoginForm } from 'shared/types/Auth';
+import { ILoginForm } from './types';
+
 import { IValidatorResponse } from 'shared/types/Validator';
 import { validate } from 'shared/utils/Validator';
 import * as yup from 'yup';

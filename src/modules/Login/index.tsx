@@ -1,4 +1,5 @@
 import { LoginWrapper } from './index.styled';
+import { ILoginForm } from './types';
 import { loginValidator } from './validators';
 
 import React, { useRef } from 'react';
@@ -7,7 +8,6 @@ import { useAsyncFn } from 'react-use';
 import { ROUTES } from 'shared/constants/Routes';
 import { useForm } from 'shared/hooks/useForm';
 import { useUserStore } from 'shared/store';
-import { ILoginForm } from 'shared/types/Auth';
 import { IFormElements } from 'shared/types/Form';
 import CommonUtil from 'shared/utils/Common';
 
