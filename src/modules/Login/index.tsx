@@ -1,13 +1,13 @@
-import { LoginWrapper } from './Login.styled';
+import { LoginWrapper } from './index.styled';
 
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAsyncFn } from 'react-use';
 import { ROUTES } from 'shared/constants/Routes';
 import { useForm } from 'shared/hooks/useForm';
-import { ILoginForm } from 'shared/interfaces/Auth';
-import { IFormElements } from 'shared/interfaces/Form';
 import { useUserStore } from 'shared/store';
+import { ILoginForm } from 'shared/types/Auth';
+import { IFormElements } from 'shared/types/Form';
 import CommonUtil from 'shared/utils/Common';
 import { loginValidator } from 'shared/validators/Login';
 
@@ -40,7 +40,7 @@ const Login: React.FC = () => {
     if (!response) return navigate(ROUTES.HOME);
 
     CommonUtil.logger({
-      path: 'components/Login/Login.tsx',
+      path: 'modules/Login/index.tsx',
       event: 'loginAsync',
       log: response.error,
     });

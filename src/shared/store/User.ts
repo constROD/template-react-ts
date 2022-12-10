@@ -1,4 +1,4 @@
-import { IUserStore } from 'shared/interfaces/Store';
+import { IUserStore } from 'shared/types/Store';
 import create from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 

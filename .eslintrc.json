@@ -12,20 +12,7 @@
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react-hooks/recommended",
-    "plugin:jest/recommended",
     "prettier"
-  ],
-  "overrides": [
-    {
-      "files": ["*.test.ts"],
-      "plugins": ["jest"],
-      "rules": {
-        "@typescript-eslint/no-unsafe-return": "off",
-        "@typescript-eslint/unbound-method": "off",
-        "@typescript-eslint/no-unsafe-call": "off",
-        "@typescript-eslint/no-unsafe-argument": "off"
-      }
-    }
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -36,7 +23,7 @@
     "sourceType": "module",
     "project": ["./tsconfig.eslint.json"]
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest", "import"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "import"],
   "rules": {
     "react/prop-types": "off",
     "react/display-name": "off",

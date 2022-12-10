@@ -1,14 +1,8 @@
 import debounce from 'lodash/debounce';
-import { useCallback, useState, useEffect, useRef, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useAsyncFn } from 'react-use';
-import {
-  ICheckboxRadio,
-  IForm,
-  IFormElements,
-  IFormHandle,
-  IFormReturn,
-} from 'shared/interfaces/Form';
-import { IValidatorError } from 'shared/interfaces/Validator';
+import { ICheckboxRadio, IForm, IFormElements, IFormHandle, IFormReturn } from 'shared/types/Form';
+import { IValidatorError } from 'shared/types/Validator';
 
 /*
 	Usage:

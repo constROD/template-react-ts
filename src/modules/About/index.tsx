@@ -1,4 +1,4 @@
-import { HomeWrapper } from './Home.styled';
+import { AboutWrapper } from './index.styled';
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { ROUTES } from 'shared/constants/Routes';
 import { useUserStore } from 'shared/store';
 import CommonUtil from 'shared/utils/Common';
 
-const Home: React.FC = () => {
+const About: React.FC = () => {
   const navigate = useNavigate();
   const logout = useUserStore(state => state.logout);
 
@@ -18,18 +18,17 @@ const Home: React.FC = () => {
     if (!response) return navigate(ROUTES.LOGIN);
 
     CommonUtil.logger({
-      path: 'components/Home/Home.tsx',
+      path: 'modules/About/index.tsx',
       event: 'loginAsync',
       log: response.error,
     });
   });
 
   return (
-    <HomeWrapper>
-      This is HomePage. <button onClick={logoutAsync}>Logout</button>
-      <button onClick={() => navigate(ROUTES.ABOUT)}>Go to About</button>
-    </HomeWrapper>
+    <AboutWrapper>
+      This is AboutPage. <button onClick={logoutAsync}>Logout</button>
+    </AboutWrapper>
   );
 };
 
-export default Home;
+export default About;

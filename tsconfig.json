@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -15,8 +16,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
-    "types": ["vite/client", "vite-plugin-svgr/client", "jest", "node"]
+    "types": ["vite/client", "vite-plugin-svgr/client", "node"]
   },
   "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"],
   "include": ["src/**/*.ts", "src/**/*.tsx"],

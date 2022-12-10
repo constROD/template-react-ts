@@ -1,4 +1,4 @@
-import { ITestStore } from 'shared/interfaces/Store';
+import { ITestStore } from 'shared/types/Store';
 import create from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 

@@ -1,4 +1,4 @@
-import { IColorTheme, IScreenTheme, ITheme } from '../interfaces/Theme';
+import { IColorTheme, IScreenTheme, ITheme } from '../types/Theme';
 
 import defaultStyled, {
   createGlobalStyle,

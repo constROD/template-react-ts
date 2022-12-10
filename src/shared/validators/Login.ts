@@ -1,5 +1,5 @@
-import { ILoginForm } from 'shared/interfaces/Auth';
-import { IValidatorError, IValidatorResponse } from 'shared/interfaces/Validator';
+import { ILoginForm } from 'shared/types/Auth';
+import { IValidatorError, IValidatorResponse } from 'shared/types/Validator';
 import * as yup from 'yup';
 
 const validate = <T>(schema: yup.ObjectSchema<any>, values: T): Promise<IValidatorResponse<T>> =>
@@ -24,7 +24,7 @@ export const loginValidator = (values: ILoginForm): Promise<IValidatorResponse<I
     email: yup.string().required('Email is required.'),
     password: yup
       .string()
-      .min(6, 'Password must be atleast 6 characters.')
+      .min(6, 'Password must be at least 6 characters.')
       .required('Password is required.'),
   });
 

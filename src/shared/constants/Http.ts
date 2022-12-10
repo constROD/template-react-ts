@@ -34,6 +34,21 @@ export enum XHeader {
   AccessToken = 'X-ACCESS-TOKEN',
 }
 
+export enum HTTPResponseType {
+  ServerError = 'ServerError',
+  Success = 'Success',
+  Created = 'Created',
+  Updated = 'Updated',
+  Archived = 'Archived',
+  Deleted = 'Deleted',
+  Restored = 'Restored',
+  BadRequest = 'BadRequest',
+  Unauthorized = 'Unauthorized',
+  Conflict = 'Conflict',
+  NotFound = 'NotFound',
+  UnprocessableEntity = 'UnprocessableEntity',
+}
+
 export const HTTP_RESPONSES = {
   ServerError: {
     message: 'Server Error',

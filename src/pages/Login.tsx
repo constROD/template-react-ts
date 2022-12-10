@@ -1,4 +1,4 @@
-import Login from 'components/Login/Login';
+import Login from 'modules/Login';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { ROUTES } from 'shared/constants/Routes';
