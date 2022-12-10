@@ -1,8 +1,10 @@
-import { ILoginForm } from 'shared/types/Auth';
 import { IValidatorError, IValidatorResponse } from 'shared/types/Validator';
 import * as yup from 'yup';
 
-const validate = <T>(schema: yup.ObjectSchema<any>, values: T): Promise<IValidatorResponse<T>> =>
+export const validate = <T>(
+  schema: yup.ObjectSchema<any>,
+  values: T
+): Promise<IValidatorResponse<T>> =>
   new Promise(resolve => {
     schema
       .validate(values, { abortEarly: false, stripUnknown: true })
@@ -18,15 +20,3 @@ const validate = <T>(schema: yup.ObjectSchema<any>, values: T): Promise<IValidat
         resolve({ data: undefined, error });
       });
   });
-
-export const loginValidator = (values: ILoginForm): Promise<IValidatorResponse<ILoginForm>> => {
-  const schema = yup.object().shape({
-    email: yup.string().required('Email is required.'),
-    password: yup
-      .string()
-      .min(6, 'Password must be at least 6 characters.')
-      .required('Password is required.'),
-  });
-
-  return validate<ILoginForm>(schema, values);
-};

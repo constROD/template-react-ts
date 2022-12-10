@@ -1,4 +1,5 @@
 import { LoginWrapper } from './index.styled';
+import { loginValidator } from './validators';
 
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +10,6 @@ import { useUserStore } from 'shared/store';
 import { ILoginForm } from 'shared/types/Auth';
 import { IFormElements } from 'shared/types/Form';
 import CommonUtil from 'shared/utils/Common';
-import { loginValidator } from 'shared/validators/Login';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
