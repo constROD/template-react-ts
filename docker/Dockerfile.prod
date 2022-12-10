@@ -1,6 +1,6 @@
 FROM node:16-buster-slim AS builder
 
-# Install necessary tools for installion.
+# Install necessary tools for installation.
 RUN apt update && apt install -y g++ make python3-dev
 
 # Go to /app directory.
@@ -18,6 +18,7 @@ COPY tailwind.config.js /app
 COPY vite.config.ts /app
 COPY tsconfig.json /app
 COPY tsconfig.node.json /app
+COPY tsconfig.paths.json /app
 COPY package.json /app
 COPY pnpm-lock.yaml /app
 COPY src /app
