@@ -3,7 +3,6 @@ node_modules
 
 # Configs
 Dockerfile
-jest.*.ts
 *.config.js
 *.config.ts
 *.html
