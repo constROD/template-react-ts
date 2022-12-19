@@ -1,9 +1,9 @@
-import { IUserStore } from 'shared/types/Store';
+import { UserStore } from 'shared/types/Store';
 import create from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 export const useUserStore = create(
-  immer<IUserStore>((set, get) => ({
+  immer<UserStore>((set, get) => ({
     /* States */
     user: null,
 
@@ -16,13 +16,13 @@ export const useUserStore = create(
 
     /* Functions */
     login: () => {
-      set((state: IUserStore) => {
+      set((state: UserStore) => {
         state.user = 'constROD';
       });
     },
 
     logout: () => {
-      set((state: IUserStore) => {
+      set((state: UserStore) => {
         state.user = null;
       });
     },

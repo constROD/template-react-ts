@@ -1,4 +1,4 @@
-import { IColorTheme, IScreenTheme, ITheme } from '../types/Theme';
+import { ColorTheme, ScreenTheme, Theme } from '../types/Theme';
 
 import defaultStyled, {
   createGlobalStyle,
@@ -6,11 +6,11 @@ import defaultStyled, {
   ThemeProvider as SThemeProvider,
 } from 'styled-components';
 
-const themeColors: IColorTheme = {
+const themeColors: ColorTheme = {
   red100: 'red',
 };
 
-const themeScreens: IScreenTheme = {
+const themeScreens: ScreenTheme = {
   small: 640,
   medium: 768,
   large: 1024,
@@ -26,9 +26,9 @@ const themeScreens: IScreenTheme = {
 export const colors = themeColors;
 export const screens = themeScreens;
 
-export const theme = (): ITheme => ({ colors: themeColors, screens: themeScreens });
+export const theme = (): Theme => ({ colors: themeColors, screens: themeScreens });
 export const ThemeProvider = SThemeProvider;
-export const styled: ThemedStyledInterface<ITheme> = defaultStyled;
+export const styled: ThemedStyledInterface<Theme> = defaultStyled;
 export const GlobalStyle = createGlobalStyle`
   html, body {
     padding: 0;

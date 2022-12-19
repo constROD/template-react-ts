@@ -1,9 +1,9 @@
-import { ITestStore } from 'shared/types/Store';
+import { TestStore } from 'shared/types/Store';
 import create from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 export const useTestStore = create(
-  immer<ITestStore>((set, get) => ({
+  immer<TestStore>((set, get) => ({
     /* States */
     price: 0,
 
@@ -16,7 +16,7 @@ export const useTestStore = create(
 
     /* Functions */
     setPrice: (payload: number) => {
-      set((state: ITestStore) => {
+      set((state: TestStore) => {
         state.price = payload;
       });
       return { error: undefined, data: get().price };
