@@ -1,8 +1,8 @@
-export interface IIdValue {
+export interface IdValue {
   id: string | number;
   value: unknown;
 }
 
-export interface IKeyValue {
+export interface KeyValue {
   [key: string]: unknown;
 }

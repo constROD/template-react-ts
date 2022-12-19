@@ -1,9 +1,9 @@
-type IStoreResponse<T = any> = {
+type StoreResponse<T = any> = {
   data: T;
   error: any | null;
 } | void;
 
-export interface ITestStore {
+export interface TestStore {
   /* States */
   price: number;
 
@@ -13,10 +13,10 @@ export interface ITestStore {
   };
 
   /* Functions */
-  setPrice: (setPrice: number) => IStoreResponse;
+  setPrice: (setPrice: number) => StoreResponse;
 }
 
-export interface IUserStore {
+export interface UserStore {
   /* States */
   user: string | null;
 
@@ -26,6 +26,6 @@ export interface IUserStore {
   };
 
   /* Functions */
-  login: () => IStoreResponse;
-  logout: () => IStoreResponse;
+  login: () => StoreResponse;
+  logout: () => StoreResponse;
 }

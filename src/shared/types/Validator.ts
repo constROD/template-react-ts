@@ -1,9 +1,9 @@
-export interface IValidatorError {
+export interface ValidatorError {
   id: string;
   message: string;
 }
 
-export interface IValidatorResponse<T = undefined> {
+export interface ValidatorResponse<T = undefined> {
   data?: T;
-  error?: IValidatorError[];
+  error?: ValidatorError[];
 }

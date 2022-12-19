@@ -1,8 +1,8 @@
-export interface IColorTheme {
+export interface ColorTheme {
   red100: string;
 }
 
-export interface IScreenTheme {
+export interface ScreenTheme {
   small: number;
   medium: number;
   large: number;
@@ -15,7 +15,7 @@ export interface IScreenTheme {
   xxLargeMedia: string;
 }
 
-export interface ITheme {
-  colors: IColorTheme;
-  screens: IScreenTheme;
+export interface Theme {
+  colors: ColorTheme;
+  screens: ScreenTheme;
 }

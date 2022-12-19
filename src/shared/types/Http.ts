@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
 
-export interface IHttpResponse<R = unknown> {
+export interface HttpResponse<R = unknown> {
   message: string;
   statusCode: number;
   code: number;
@@ -8,11 +8,11 @@ export interface IHttpResponse<R = unknown> {
   error?: any;
 }
 
-export type IHttpRequest = {
+export type HttpRequest = {
   params?: any;
   body?: any;
 } & AxiosRequestConfig;
 
-export interface IHttpOptions {
+export interface HttpOptions {
   isPublic?: boolean;
 }

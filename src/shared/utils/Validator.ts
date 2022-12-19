@@ -1,10 +1,10 @@
-import { IValidatorError, IValidatorResponse } from 'shared/types/Validator';
+import { ValidatorError, ValidatorResponse } from 'shared/types/Validator';
 import * as yup from 'yup';
 
 export const validate = <T>(
   schema: yup.ObjectSchema<any>,
   values: T
-): Promise<IValidatorResponse<T>> =>
+): Promise<ValidatorResponse<T>> =>
   new Promise(resolve => {
     schema
       .validate(values, { abortEarly: false, stripUnknown: true })
@@ -16,7 +16,7 @@ export const validate = <T>(
         const error = err.inner.map((e: { path: string; message: string }) => ({
           id: e.path,
           message: e.message,
-        })) as IValidatorError[];
+        })) as ValidatorError[];
         resolve({ data: undefined, error });
       });
   });
