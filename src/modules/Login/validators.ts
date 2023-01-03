@@ -1,10 +1,10 @@
-import { ILoginForm } from './types';
+import { LoginForm } from './types';
 
-import { IValidatorResponse } from 'shared/types/Validator';
+import { ValidatorResponse } from 'shared/types/Validator';
 import { validate } from 'shared/utils/Validator';
 import * as yup from 'yup';
 
-export const loginValidator = (values: ILoginForm): Promise<IValidatorResponse<ILoginForm>> => {
+export const loginValidator = (values: LoginForm): Promise<ValidatorResponse<LoginForm>> => {
   const schema = yup.object().shape({
     email: yup.string().required('Email is required.'),
     password: yup
@@ -13,5 +13,5 @@ export const loginValidator = (values: ILoginForm): Promise<IValidatorResponse<I
       .required('Password is required.'),
   });
 
-  return validate<ILoginForm>(schema, values);
+  return validate<LoginForm>(schema, values);
 };
