@@ -11,7 +11,8 @@
     "postcss",
     "accum",
     "zustand",
-    "immer"
+    "immer",
+    "tailwindcss"
   ],
   "ignorePaths": ["node_modules/", "build/", ".husky", "pnpm-lock.yaml", "package.json"]
 }
