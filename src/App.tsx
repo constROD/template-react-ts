@@ -27,10 +27,10 @@ const App: React.FC = () => {
   );
 
   return (
-    <RootLayout>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <RootLayout>
           <Routes>
             <Route element={<AuthenticatedRoute />}>
               <Route element={<PageLayout />}>
@@ -41,10 +41,10 @@ const App: React.FC = () => {
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </ThemeProvider>
-        {STAGE === STAGES.Dev && <ReactQueryDevtools initialIsOpen={false} />}
-      </QueryClientProvider>
-    </RootLayout>
+        </RootLayout>
+      </ThemeProvider>
+      {STAGE === STAGES.Dev && <ReactQueryDevtools initialIsOpen={false} />}
+    </QueryClientProvider>
   );
 };
 
