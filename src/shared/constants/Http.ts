@@ -11,43 +11,23 @@
   8 - Unauthorized
   9 - Conflict
   10 - Not Found
-  11 - Unprocessable Entity
+  11 - Forbidden
 */
 
-export enum Code {
-  ServerError = 0,
-  Success = 1,
-  Created = 2,
-  Updated = 3,
-  Archived = 4,
-  Deleted = 5,
-  Restored = 6,
-  BadRequest = 7,
-  Unauthorized = 8,
-  Conflict = 9,
-  NotFound = 10,
-  UnprocessableEntity = 11,
-}
-
-export enum XHeader {
-  IdToken = 'X-ID-TOKEN',
-  AccessToken = 'X-ACCESS-TOKEN',
-}
-
-export enum HTTPResponseType {
-  ServerError = 'ServerError',
-  Success = 'Success',
-  Created = 'Created',
-  Updated = 'Updated',
-  Archived = 'Archived',
-  Deleted = 'Deleted',
-  Restored = 'Restored',
-  BadRequest = 'BadRequest',
-  Unauthorized = 'Unauthorized',
-  Conflict = 'Conflict',
-  NotFound = 'NotFound',
-  UnprocessableEntity = 'UnprocessableEntity',
-}
+export const CODES = {
+  ServerError: 0,
+  Success: 1,
+  Created: 2,
+  Updated: 3,
+  Archived: 4,
+  Deleted: 5,
+  Restored: 6,
+  BadRequest: 7,
+  Unauthorized: 8,
+  Conflict: 9,
+  NotFound: 10,
+  Forbidden: 11,
+};
 
 export const HTTP_RESPONSES = {
   ServerError: {
@@ -105,9 +85,13 @@ export const HTTP_RESPONSES = {
     statusCode: 404,
     code: 10,
   },
-  UnprocessableEntity: {
-    message: 'Unprocessable Entity',
-    statusCode: 422,
+  Forbidden: {
+    message: 'Forbidden',
+    statusCode: 403,
     code: 11,
   },
+};
+
+export const X_HEADERS = {
+  AccessToken: 'x-access-token',
 };

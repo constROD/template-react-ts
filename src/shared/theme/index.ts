@@ -38,8 +38,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #root {
-    display: grid;
+    position: relative;
     height: 100%;
+    width: 100%;
   }
   
   *, *::before, *::after {

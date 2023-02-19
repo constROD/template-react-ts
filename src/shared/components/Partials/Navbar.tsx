@@ -1,9 +1,7 @@
-import { NavbarWrapper } from './Navbar.styled';
-
 import React from 'react';
 
 const Navbar: React.FC = () => {
-  return <NavbarWrapper>Navbar</NavbarWrapper>;
+  return <div>Navbar</div>;
 };
 
 export default Navbar;

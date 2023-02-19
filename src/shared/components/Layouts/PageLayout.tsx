@@ -1,5 +1,3 @@
-import { PageLayoutWrapper } from './PageLayout.styled';
-
 import Footer from '../Partials/Footer';
 import Navbar from '../Partials/Navbar';
 
@@ -8,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 
 const PageLayout: React.FC = () => {
   return (
-    <PageLayoutWrapper>
+    <div>
       <Navbar />
       <Suspense fallback={<div>Loading...</div>}>
         <div className="content-main">
@@ -16,7 +14,7 @@ const PageLayout: React.FC = () => {
         </div>
       </Suspense>
       <Footer />
-    </PageLayoutWrapper>
+    </div>
   );
 };
 

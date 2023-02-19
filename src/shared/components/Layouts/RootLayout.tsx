@@ -1,9 +1,7 @@
-import { RootLayoutWrapper } from './RootLayout.styled';
+import React, { ReactNode } from 'react';
 
-import React from 'react';
-
-const RootLayout: React.FC<{ children: any }> = ({ children }) => {
-  return <RootLayoutWrapper>{children}</RootLayoutWrapper>;
+const RootLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return <div className="relative h-full">{children}</div>;
 };
 
 export default RootLayout;

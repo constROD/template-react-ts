@@ -5,7 +5,7 @@ import { ROUTES } from 'shared/constants/Routes';
 import { useUserStore } from 'shared/store';
 
 const LoginPage: React.FC = () => {
-  const { isSignedIn } = useUserStore(state => state.computed);
+  const isSignedIn = useUserStore(state => state.computed.isSignedIn);
 
   if (isSignedIn) return <Navigate to={ROUTES.HOME} />;
 

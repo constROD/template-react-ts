@@ -12,7 +12,11 @@
     "accum",
     "zustand",
     "immer",
-    "tailwindcss"
+    "tailwindcss",
+    "tanstack",
+    "opentype",
+    "truetype",
+    "pallete"
   ],
   "ignorePaths": ["node_modules/", "build/", ".husky", "pnpm-lock.yaml", "package.json"]
 }
