@@ -10,12 +10,11 @@ dist
 .env
 .env.*
 .npmrc
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+*.tsbuildinfo
+
+*-lock.json
+*-lock.yaml
+*.lock
 
 logs
 *.log

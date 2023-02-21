@@ -1,6 +1,7 @@
 node_modules
 
 .eslintcache
+.pnpm-store
 
 build
 dist
@@ -10,13 +11,9 @@ dist
 .env.*
 .env-encoded
 .npmrc
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-.pnpm-store
+*.tsbuildinfo
+
+!**.example
 
 *-lock.json
 *-lock.yaml

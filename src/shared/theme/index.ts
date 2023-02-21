@@ -1,8 +1,8 @@
-import { ColorTheme, ScreenTheme, Theme } from '../types/Theme';
+import { type ColorTheme, type ScreenTheme, type Theme } from '../types/Theme';
 
 import defaultStyled, {
   createGlobalStyle,
-  ThemedStyledInterface,
+  type ThemedStyledInterface,
   ThemeProvider as SThemeProvider,
 } from 'styled-components';
 

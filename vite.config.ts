@@ -1,11 +1,12 @@
-import { defineConfig } from 'vite';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import react from '@vitejs/plugin-react';
 import { config } from 'dotenv';
-import tsconfigPaths from 'vite-tsconfig-paths';
-import svgr from 'vite-plugin-svgr';
+import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
+import pages from 'vite-plugin-pages';
+import svgr from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 config();
 
@@ -22,6 +23,7 @@ export default ({ mode }) => {
   return defineConfig({
     plugins: [
       react(),
+      pages(),
       tsconfigPaths(),
       svgr({
         svgrOptions: {

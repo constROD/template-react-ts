@@ -20,7 +20,7 @@ $ nvm use or nvm use 16.13.0
 ```
 
 - Create `.env` file.
-- and refer to the `sample.<secret-file>.txt` for the required variables.
+- and refer to the `<secret-name>.example` for the required variables.
 
 ## Without Docker
 

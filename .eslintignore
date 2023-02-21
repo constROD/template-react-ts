@@ -15,14 +15,9 @@ dist
 .env
 .env.*
 .npmrc
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+*.tsbuildinfo
 
-sample.*.txt
+!**.example
 
 *-lock.json
 *-lock.yaml

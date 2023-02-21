@@ -1,4 +1,4 @@
-import { UserStore } from 'shared/types/Store';
+import { type UserStore } from 'shared/types/Store';
 import create from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 

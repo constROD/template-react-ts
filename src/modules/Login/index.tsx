@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState, type ChangeEvent } from 'react';
 import { useUserStore } from 'shared/store';
-import { z } from 'zod';
+import { type z } from 'zod';
 import { loginSchema } from './validators';
 
 const Login: React.FC = () => {

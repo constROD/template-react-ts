@@ -1,17 +1,15 @@
+// vite-env.d.ts
+/// <reference types="vite-plugin-pages/client-react" />
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import AboutPage from 'pages/About';
-import HomePage from 'pages/Home';
-import LoginPage from 'pages/Login';
-import NotFoundPage from 'pages/NotFound';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AuthenticatedRoute from 'shared/components/AuthenticatedRoute';
-import PageLayout from 'shared/components/Layouts/PageLayout';
+import { useRoutes } from 'react-router-dom';
 import RootLayout from 'shared/components/Layouts/RootLayout';
 import { STAGE, STAGES } from 'shared/constants/Environment';
-import { ROUTES } from 'shared/constants/Routes';
 import { GlobalStyle, theme, ThemeProvider } from 'shared/theme';
+
+import routes from '~react-pages';
 
 const App: React.FC = () => {
   const [queryClient] = React.useState(
@@ -30,18 +28,7 @@ const App: React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <RootLayout>
-          <Routes>
-            <Route element={<AuthenticatedRoute />}>
-              <Route element={<PageLayout />}>
-                <Route path={ROUTES.HOME} element={<HomePage />} />
-                <Route path={ROUTES.ABOUT} element={<AboutPage />} />
-              </Route>
-            </Route>
-            <Route path={ROUTES.LOGIN} element={<LoginPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </RootLayout>
+        <RootLayout>{useRoutes(routes)}</RootLayout>
       </ThemeProvider>
       {STAGE === STAGES.Dev && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
