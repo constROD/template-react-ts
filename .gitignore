@@ -15,9 +15,11 @@ dist
 
 !**.example
 
-# Comment out the lock file based on your package manager
+# Remove the lock below if you're using npm
 *-lock.json
-# *-lock.yaml
+# Remove the lock below if you're using pnpm
+*-lock.yaml
+# Remove the lock below if you're using yarn
 *.lock
 
 logs
