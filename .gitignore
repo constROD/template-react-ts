@@ -15,8 +15,9 @@ dist
 
 !**.example
 
+# Comment out the lock file based on your package manager
 *-lock.json
-*-lock.yaml
+# *-lock.yaml
 *.lock
 
 logs
