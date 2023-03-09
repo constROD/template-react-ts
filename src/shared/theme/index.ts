@@ -1,16 +1,15 @@
-import { type ColorTheme, type ScreenTheme, type Theme } from '../types/Theme';
-
 import defaultStyled, {
   createGlobalStyle,
-  type ThemedStyledInterface,
   ThemeProvider as SThemeProvider,
+  type ThemedStyledInterface,
+  type ThemeProviderComponent,
 } from 'styled-components';
 
-const themeColors: ColorTheme = {
+const themeColors = {
   red100: 'red',
-};
+} as const;
 
-const themeScreens: ScreenTheme = {
+const themeScreens = {
   small: 640,
   medium: 768,
   large: 1024,
@@ -21,14 +20,14 @@ const themeScreens: ScreenTheme = {
   largeMedia: '@media (min-width: 1024px)',
   xLargeMedia: '@media (min-width: 1280px)',
   xxLargeMedia: '@media (min-width: 1536px)',
-};
+} as const;
 
 export const colors = themeColors;
 export const screens = themeScreens;
 
-export const theme = (): Theme => ({ colors: themeColors, screens: themeScreens });
-export const ThemeProvider = SThemeProvider;
-export const styled: ThemedStyledInterface<Theme> = defaultStyled;
+export const theme = () => ({ colors: themeColors, screens: themeScreens });
+export const ThemeProvider = SThemeProvider as ThemeProviderComponent<ReturnType<typeof theme>>;
+export const styled = defaultStyled as ThemedStyledInterface<ReturnType<typeof theme>>;
 export const GlobalStyle = createGlobalStyle`
   html, body {
     padding: 0;
