@@ -9,6 +9,7 @@ export const STAGES = {
   Staging: 'staging',
   Prod: 'prod',
 } as const;
-export const STAGE_VALUES = [...Object.values(STAGES)] as const;
 
-export const STAGE = (process.env.STAGE as typeof STAGE_VALUES[number]) || STAGES.Dev;
+export type StageType = typeof STAGES[keyof typeof STAGES];
+
+export const STAGE = (process.env.STAGE as StageType) || STAGES.Dev;
