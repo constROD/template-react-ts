@@ -1,5 +1,5 @@
 import { type UserStore } from 'shared/types/Store';
-import create from 'zustand';
+import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 /**

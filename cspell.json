@@ -16,7 +16,10 @@
     "tanstack",
     "opentype",
     "truetype",
-    "pallete"
+    "pallete",
+    "browserconfig",
+    "msapplication",
+    "mstile"
   ],
   "ignorePaths": ["node_modules/", "build/", ".husky", "pnpm-lock.yaml", "package.json"]
 }

@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
-import RootLayout from 'shared/components/Layouts/RootLayout';
+import { RootLayout } from 'shared/components/Layouts';
 import { STAGE, STAGES } from 'shared/constants/Environment';
 import { GlobalStyle, theme, ThemeProvider } from 'shared/theme';
 

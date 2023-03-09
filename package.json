@@ -42,7 +42,7 @@
     "react-use": "^17.4.0",
     "styled-components": "^5.3.5",
     "zod": "^3.20.6",
-    "zustand": "^4.0.0-rc.1"
+    "zustand": "^4.3.6"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",

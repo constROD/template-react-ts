@@ -1,18 +1,17 @@
-import Footer from '../Partials/Footer';
-import Navbar from '../Partials/Navbar';
-
 import React, { Suspense, type ReactNode } from 'react';
+import AuthenticatedRoute from '../AuthenticatedRoute';
+import { Footer, Navbar } from '../Partials';
 
-const PageLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const PageLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <div>
-      <Navbar />
-      <Suspense fallback={<div>Loading...</div>}>
-        <div className="content-main">{children}</div>
-      </Suspense>
-      <Footer />
-    </div>
+    <AuthenticatedRoute>
+      <div>
+        <Navbar />
+        <Suspense fallback={<div>Loading...</div>}>
+          <div className="content-main">{children}</div>
+        </Suspense>
+        <Footer />
+      </div>
+    </AuthenticatedRoute>
   );
 };
-
-export default PageLayout;
