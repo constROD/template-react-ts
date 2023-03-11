@@ -1,4 +1,4 @@
-import { type UserStore } from 'shared/types/Store';
+import { type StoreResponse } from 'shared/types/Store';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
@@ -15,6 +15,20 @@ import { immer } from 'zustand/middleware/immer';
  *
  * * If you use the following, it will detect the change.
  */
+
+export interface UserStore {
+  /* States */
+  user: string | null;
+
+  /* Computed States */
+  computed: {
+    isSignedIn: boolean;
+  };
+
+  /* Functions */
+  login: () => StoreResponse;
+  logout: () => StoreResponse;
+}
 
 export const useUserStore = create(
   immer<UserStore>((set, get) => ({
