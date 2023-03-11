@@ -7,7 +7,6 @@ import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import { RootLayout } from 'shared/components/Layouts';
 import { STAGE, STAGES } from 'shared/constants/Environment';
-import { GlobalStyle, theme, ThemeProvider } from 'shared/theme';
 
 import routes from '~react-pages';
 
@@ -26,10 +25,7 @@ const App: React.FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <RootLayout>{useRoutes(routes)}</RootLayout>
-      </ThemeProvider>
+      <RootLayout>{useRoutes(routes)}</RootLayout>
       {STAGE === STAGES.Dev && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
   );
