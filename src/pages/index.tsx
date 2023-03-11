@@ -1,5 +1,5 @@
+import { PageLayout } from 'modules/Layouts';
 import React from 'react';
-import { PageLayout } from 'shared/components/Layouts';
 
 const AsyncHome = React.lazy(() => import('modules/Home'));
 

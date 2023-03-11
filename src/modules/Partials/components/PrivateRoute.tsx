@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { ROUTES } from 'shared/constants/Routes';
 import { useUserStore } from 'shared/store';
 
-const AuthenticatedRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {
+export const PrivateRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {
   const location = useLocation();
   const isSignedIn = useUserStore(state => state.computed.isSignedIn);
 
@@ -11,5 +11,3 @@ const AuthenticatedRoute: React.FC<{ children: React.ReactElement }> = ({ childr
 
   return children;
 };
-
-export default AuthenticatedRoute;

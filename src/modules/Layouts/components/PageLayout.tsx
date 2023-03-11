@@ -1,10 +1,9 @@
+import { Footer, Navbar, PrivateRoute } from 'modules/Partials';
 import React, { Suspense, type ReactNode } from 'react';
-import AuthenticatedRoute from '../AuthenticatedRoute';
-import { Footer, Navbar } from '../Partials';
 
 export const PageLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <AuthenticatedRoute>
+    <PrivateRoute>
       <div>
         <Navbar />
         <Suspense fallback={<div>Loading...</div>}>
@@ -12,6 +11,6 @@ export const PageLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
         </Suspense>
         <Footer />
       </div>
-    </AuthenticatedRoute>
+    </PrivateRoute>
   );
 };
