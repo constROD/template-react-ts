@@ -1,7 +1,7 @@
 import React, { useState, type ChangeEvent } from 'react';
 import { useUserStore } from 'shared/store';
 import { type z } from 'zod';
-import { loginSchema } from './validators';
+import { loginSchema } from './validations';
 
 const Login: React.FC = () => {
   const defaultValues: z.infer<typeof loginSchema> = {

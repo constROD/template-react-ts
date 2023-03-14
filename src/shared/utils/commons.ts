@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { DEFAULT_ASSET_DOMAIN, DEFAULT_ASSET_VERSION } from 'shared/constants/commons';
 
 export const formatDate = (date: Date | null, desiredFormat?: string) => {
   if (!date) return '';
@@ -11,3 +12,13 @@ export const logger = ({ path, event, log }: { path: string; event: string; log:
   // eslint-disable-next-line no-console
   console.log(`[${date}]: ${path} (${event}) >> `, JSON.stringify(log, null, 2));
 };
+
+export const makeImageUrl = ({
+  url,
+  domain,
+  version,
+}: {
+  url: string;
+  domain?: string;
+  version?: string;
+}) => `${domain ?? DEFAULT_ASSET_DOMAIN}${url}?v=${version ?? DEFAULT_ASSET_VERSION}`;
