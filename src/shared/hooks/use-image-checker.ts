@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
-export const useImageLoaded = () => {
+export const useImageChecker = () => {
   const [loading, setLoading] = useState(true);
   const ref = useRef<HTMLImageElement | null>(null);
 

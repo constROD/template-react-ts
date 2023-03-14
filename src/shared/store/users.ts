@@ -1,4 +1,4 @@
-import { type StoreResponse } from 'shared/types/Store';
+import { type StoreResponse } from 'shared/types/stores';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 

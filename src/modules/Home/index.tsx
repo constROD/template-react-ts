@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES } from 'shared/constants/Routes';
+import { ROUTES } from 'shared/constants/routess';
 import { useUserStore } from 'shared/store';
 
 const Home: React.FC = () => {

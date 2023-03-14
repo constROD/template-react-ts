@@ -1,2 +1,2 @@
-export * from './useImageLoaded';
-export * from './useVideoLoaded';
+export * from './use-image-checker';
+export * from './use-video-checker';

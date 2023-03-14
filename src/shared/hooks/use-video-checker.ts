@@ -1,7 +1,7 @@
-import { useState, useRef, useMemo } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useEffectOnce } from 'react-use';
 
-export const useVideoLoaded = () => {
+export const useVideoChecker = () => {
   const [loading, setLoading] = useState(true);
   const ref = useRef<HTMLVideoElement | null>(null);
 

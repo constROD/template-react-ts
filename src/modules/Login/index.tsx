@@ -14,14 +14,10 @@ const Login: React.FC = () => {
   const login = useUserStore(state => state.login);
 
   const handleLogin = () => {
-    const isValid = loginSchema.safeParse(values);
-
-    if (!isValid.success) {
-      console.log({ error: isValid.error });
-    } else {
-      console.log({ data: isValid.data });
-      login();
-    }
+    const validated = loginSchema.safeParse(values);
+    // eslint-disable-next-line no-console
+    if (!validated.success) return console.debug({ error: validated.error });
+    login();
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

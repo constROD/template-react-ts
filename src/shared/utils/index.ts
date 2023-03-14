@@ -1,2 +1,2 @@
-export * from './Common';
-export * from './LocalStorage';
+export * from './commons';
+export * from './local-storages';
