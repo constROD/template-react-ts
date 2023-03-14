@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RootLayout } from 'modules/Layouts';
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
-import { STAGE, STAGES } from 'shared/constants/Environment';
+import { STAGE, STAGES } from 'shared/constants/environments';
 
 import routes from '~react-pages';
 
