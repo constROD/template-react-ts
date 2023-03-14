@@ -19,8 +19,7 @@
     "pallete",
     "browserconfig",
     "msapplication",
-    "mstile",
-    "routess"
+    "mstile"
   ],
   "ignorePaths": ["node_modules/", "build/", ".husky", "pnpm-lock.yaml", "package.json"]
 }
