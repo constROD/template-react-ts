@@ -82,7 +82,10 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #2a2a2a inset;
 }
-/* Change text color from autofill inputs */
+/* 
+  Change text color from autofill inputs.
+  Change #e0e0e0 to the text color of you choice 
+*/
 input:-webkit-autofill {
   -webkit-text-fill-color: #e0e0e0 !important;
 }
