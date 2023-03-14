@@ -1,6 +1,8 @@
 /**
  * * When you add a new environment, you must add it to the list below.
- * * - You must also add it to the list of environments in the .env file.
+ * * - You must add it to the `.env` file.
+ * * - You must add it to the `.env.example` file.
+ * * - You must add it to the `src/shared/constants/environments.ts` file.
  */
 
 export const STAGES = {
