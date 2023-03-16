@@ -27,7 +27,7 @@ export const CODES = {
   Conflict: 9,
   NotFound: 10,
   Forbidden: 11,
-};
+} as const;
 
 export const HTTP_RESPONSES = {
   ServerError: {
@@ -90,8 +90,8 @@ export const HTTP_RESPONSES = {
     statusCode: 403,
     code: 11,
   },
-};
+} as const;
 
 export const X_HEADERS = {
   AccessToken: 'x-access-token',
-};
+} as const;
