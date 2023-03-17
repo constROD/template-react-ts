@@ -44,13 +44,13 @@ export const useUserStore = create(
 
     /* Functions */
     login: () => {
-      set((state: UserStore) => {
+      set(state => {
         state.user = 'constROD';
       });
     },
 
     logout: () => {
-      set((state: UserStore) => {
+      set(state => {
         state.user = null;
       });
     },

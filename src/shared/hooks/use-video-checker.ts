@@ -3,7 +3,7 @@ import { useEffectOnce } from 'react-use';
 
 export const useVideoChecker = () => {
   const [loading, setLoading] = useState(true);
-  const ref = useRef<HTMLVideoElement | null>(null);
+  const ref = useRef<HTMLVideoElement>();
 
   const handleCanPlay = () => {
     setLoading(false);

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 export const useImageChecker = () => {
   const [loading, setLoading] = useState(true);
-  const ref = useRef<HTMLImageElement | null>(null);
+  const ref = useRef<HTMLImageElement>();
 
   const onLoad = () => {
     setLoading(false);
