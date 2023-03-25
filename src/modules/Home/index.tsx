@@ -63,7 +63,7 @@ const Home: React.FC = () => {
           <Link to={ROUTES.SAMPLES}>
             <Card
               title="Samples"
-              description="Sample functionality and pages implemented such as Todos and basic auth."
+              description="Sample functionality and pages implementation such as Todos and basic auth."
             />
           </Link>
         </div>
