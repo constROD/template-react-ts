@@ -10,14 +10,14 @@ const Login: React.FC = () => {
   };
 
   const [values, setValues] = useState(defaultValues);
+  const [errors, setErrors] = useState<z.ZodIssue[]>([]);
 
   const login = useUserStore(state => state.login);
 
   const handleLogin = () => {
     const validated = loginSchema.safeParse(values);
-    // eslint-disable-next-line no-console
-    if (!validated.success) return console.debug({ error: validated.error });
-    login();
+    if (!validated.success) return setErrors(validated.error.issues);
+    login(validated.data.email);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +26,8 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-5">
+    <div className="flex h-full flex-col items-center justify-center gap-5">
+      <pre>{JSON.stringify(errors, null, 2)}</pre>
       <div className="flex h-auto w-[500px] flex-col gap-2 border-2 p-4">
         <input
           className="border-2 outline-none"

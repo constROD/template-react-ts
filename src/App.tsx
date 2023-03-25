@@ -4,7 +4,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RootLayout } from 'modules/Layouts';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 import { STAGE, STAGES } from 'shared/constants/environments';
 
@@ -25,7 +25,9 @@ const App: React.FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RootLayout>{useRoutes(routes)}</RootLayout>
+      <RootLayout>
+        <Suspense fallback={null}>{useRoutes(routes)}</Suspense>
+      </RootLayout>
       {STAGE === STAGES.Dev && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
   );

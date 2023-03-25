@@ -19,7 +19,10 @@
     "pallete",
     "browserconfig",
     "msapplication",
-    "mstile"
+    "mstile",
+    "bossrod",
+    "bossrodtv",
+    "todos"
   ],
   "ignorePaths": ["node_modules/", "build/", ".husky", "pnpm-lock.yaml", "package.json"]
 }

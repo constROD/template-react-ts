@@ -50,6 +50,7 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
+  background: #eff0f4;
 }
 
 #root {
@@ -74,13 +75,13 @@ body {
 
 /* 
   Remove background color from autofill inputs.
-  Change #ffffff to the background color of your app because transparent doesn't work here.
+  Change #eff0f4 to the background color of your app because transparent doesn't work here.
 */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #ffffff inset;
+  -webkit-box-shadow: 0 0 0 30px #eff0f4 inset;
 }
 /* 
   Change text color from autofill inputs.

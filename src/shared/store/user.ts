@@ -18,7 +18,7 @@ import { immer } from 'zustand/middleware/immer';
 
 export interface UserStore {
   /* States */
-  user: string | null;
+  email: string | null;
 
   /* Computed States */
   computed: {
@@ -26,32 +26,32 @@ export interface UserStore {
   };
 
   /* Functions */
-  login: () => StoreResponse;
+  login: (email: string) => StoreResponse;
   logout: () => StoreResponse;
 }
 
 export const useUserStore = create(
   immer<UserStore>((set, get) => ({
     /* States */
-    user: null,
+    email: null,
 
     /* Computed */
     computed: {
       get isSignedIn() {
-        return !!get().user;
+        return !!get().email;
       },
     },
 
     /* Functions */
-    login: () => {
+    login: (email: string) => {
       set(state => {
-        state.user = 'constROD';
+        state.email = email;
       });
     },
 
     logout: () => {
       set(state => {
-        state.user = null;
+        state.email = null;
       });
     },
   }))
