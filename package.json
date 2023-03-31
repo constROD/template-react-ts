@@ -20,7 +20,7 @@
     "build": "pnpm clean && vite build",
     "release": "changeset tag",
     "preview": "vite preview",
-    "encode:env": "cat .env | base64 -w 0 > .env-encoded",
+    "env:encode": "cat .env | base64 -w 0 > .env-encoded",
     "format": "prettier --write ./src/**/*.ts{,x}",
     "lint": "eslint ./src --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "eslint ./src --fix --ext .js,.ts,.jsx,.tsx",
