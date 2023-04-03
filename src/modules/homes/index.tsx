@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as BossRODSvg } from 'shared/assets/svg/bossrod.svg';
 import { ReactComponent as MinusSvg } from 'shared/assets/svg/minus.svg';
 import { ReactComponent as PlusSvg } from 'shared/assets/svg/plus.svg';
-import { ROUTES } from 'shared/constants/routes';
-import { Card } from './components/Card';
+import { ROUTES } from 'shared/constants/commons';
+import { Card } from './components/cards';
 
 const Home: React.FC = () => {
   const [count, setCount] = useState(0);

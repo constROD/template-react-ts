@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { ROUTES } from 'shared/constants/Routes';
+import { ROUTES } from 'shared/constants/commons';
 import { useUserStore } from 'shared/store';
 
 export const PrivateRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {

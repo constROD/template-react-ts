@@ -22,7 +22,13 @@
     "mstile",
     "bossrod",
     "bossrodtv",
-    "todos"
+    "todos",
+    "layoutss",
+    "navbars",
+    "todoss",
+    "partialss",
+    "abouts",
+    "loginss"
   ],
   "ignorePaths": ["node_modules/", "build/", ".husky", "pnpm-lock.yaml", "package.json"]
 }

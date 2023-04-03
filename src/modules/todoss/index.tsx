@@ -1,7 +1,7 @@
-import { type Todo } from 'modules/Todos/types';
+import { type Todo } from 'modules/todoss/types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTES } from 'shared/constants/routes';
+import { ROUTES } from 'shared/constants/commons';
 
 type Props = { todos: Todo[] };
 

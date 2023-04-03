@@ -1,5 +1,5 @@
-import Todos from 'modules/Todos';
-import { useGetTodos } from 'modules/Todos/hooks';
+import Todos from 'modules/todoss';
+import { useGetTodos } from 'modules/todoss/hooks';
 import React from 'react';
 
 const TodosPage: React.FC = () => {
