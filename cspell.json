@@ -23,12 +23,7 @@
     "bossrod",
     "bossrodtv",
     "todos",
-    "layoutss",
-    "navbars",
-    "todoss",
-    "partialss",
-    "abouts",
-    "loginss"
+    "partialssasd"
   ],
-  "ignorePaths": ["node_modules/", "build/", ".husky", "pnpm-lock.yaml", "package.json"]
+  "ignorePaths": ["node_modules", "build", "dist", ".husky", "pnpm-lock.yaml", "package.json"]
 }

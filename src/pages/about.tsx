@@ -1,8 +1,8 @@
-import { PageLayout } from 'modules/layoutss';
-import { PrivateRoute } from 'modules/partialss';
+import { PageLayout } from 'modules/layouts';
+import { PrivateRoute } from 'modules/partialssasd';
 import React from 'react';
 
-const AsyncAbout = React.lazy(() => import('modules/abouts'));
+const AsyncAbout = React.lazy(() => import('modules/about'));
 
 const AboutPage: React.FC = () => {
   return (

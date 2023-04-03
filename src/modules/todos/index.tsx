@@ -1,4 +1,4 @@
-import { type Todo } from 'modules/todoss/types';
+import { type Todo } from 'modules/todos/types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from 'shared/constants/commons';
