@@ -1,5 +1,5 @@
 import { PageLayout } from 'modules/layouts';
-import { PrivateRoute } from 'modules/partialssasd';
+import { PrivateRoute } from 'modules/partials';
 import React from 'react';
 
 const AsyncAbout = React.lazy(() => import('modules/about'));

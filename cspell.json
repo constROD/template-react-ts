@@ -22,8 +22,7 @@
     "mstile",
     "bossrod",
     "bossrodtv",
-    "todos",
-    "partialssasd"
+    "todos"
   ],
   "ignorePaths": ["node_modules", "build", "dist", ".husky", "pnpm-lock.yaml", "package.json"]
 }
