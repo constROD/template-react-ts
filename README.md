@@ -9,14 +9,15 @@
 - **(Required for MacOSX):** Run this to give permission husky to run pre-commit hook.
 
 ```bash
-$ chmod ug+x .husky/*
-$ chmod ug+x .git/hooks/*
+chmod ug+x .husky/*
+chmod ug+x .git/hooks/*
 ```
 
 - **(Optional):** Do this if you are using **nvm**.
 
 ```bash
-$ nvm use or nvm use 16.13.0
+nvm use # For MacOSX and Linux
+nvm use $(cat .nvmrc) # For windows (Git Bash)
 ```
 
 - Create `.env` file.
@@ -27,13 +28,13 @@ $ nvm use or nvm use 16.13.0
 - Install dependencies.
 
 ```bash
-$ pnpm i
+pnpm i
 ```
 
 **Development Mode:**
 
 ```bash
-$ pnpm dev
+pnpm dev
 ```
 
 **Production Mode:**
@@ -41,7 +42,7 @@ $ pnpm dev
 - Build the application.
 
 ```bash
-$ pnpm build
+pnpm build
 ```
 
 - and serve the generated `build` folder to the server.
